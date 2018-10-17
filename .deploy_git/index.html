@@ -94,7 +94,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2018/10/17/java设计模式/" data-id="cjnctqgjm001rwknzc7kjo82x" class="article-share-link">Share</a>
+      <a data-url="https://yapengwen.github.io/2018/10/17/java设计模式/" data-id="cjnctyr46001dk4nz2ugghq6k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2018/10/17/druid_解密数据库密码/" data-id="cjnctqgib0005wknza3ys6pco" class="article-share-link">Share</a>
+      <a data-url="https://yapengwen.github.io/2018/10/17/druid_解密数据库密码/" data-id="cjnctyr360005k4nzsuxzkp4u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DRUID/">DRUID</a></li></ul>
@@ -281,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2017/12/20/windows下安装rabbitmq及操作常用命令/" data-id="cjnctqgku0036wknzj3hyctp3" class="article-share-link">Share</a>
+      <a data-url="https://yapengwen.github.io/2017/12/20/windows下安装rabbitmq及操作常用命令/" data-id="cjnctyr5n0030k4nz1lt4flr8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
@@ -331,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/" data-id="cjnctqgk00026wknzuqb22iuu" class="article-share-link">Share</a>
+      <a data-url="https://yapengwen.github.io/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/" data-id="cjnctyr4v0029k4nzsky1pgcy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
@@ -391,72 +391,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2017/12/15/spring整合rocketmq/" data-id="cjnctqgjw0022wknztqvm13by" class="article-share-link">Share</a>
+      <a data-url="https://yapengwen.github.io/2017/12/15/spring整合rocketmq/" data-id="cjnctyr4l001wk4nz0axfjdxd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-aes-rsa加密机制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/05/aes-rsa加密机制/" class="article-date">
-  <time datetime="2017-12-05T03:37:00.000Z" itemprop="datePublished">2017-12-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/加解密/">加解密</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/05/aes-rsa加密机制/">AES-RSA加密机制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在服务器与终端设备进行HTTP通讯时，常常会被网络抓包、反编译（Android <a href="https://link.jianshu.com?t=http://idoog.me/?p=2933" target="_blank" rel="noopener">APK反编译工具</a>）等技术得到HTTP通讯接口地址和参数。为了确保信息的安全，我们采用AES+RSA组合的方式进行接口参数加密和解密。</p>
-<p>1.关于RSA加密机制：公钥用于对数据进行加密，私钥对数据进行解密，两者不可逆。公钥和私钥是同时生成的，一一对应。比如：A拥有公钥，B拥有公钥和私钥。A将数据通过公钥进行加密后，发送密文给B，B可以通过私钥和公钥进行解密。</p>
-<p>2.AES加密也叫对称加密：A用密码对数据进行AES加密后，B用同样的密码对密文进行AES解密。</p>
-<p>具体操作方法：</p>
-<p>1.在终端中采用openssl方式输入密钥的相关属性（公司名、邮箱等），然后在终端当前所在的地址下，生成公钥和私钥共7个文件（7个文件如何使用请看附录的拓展了链接）。</p>
-<p>2.此时假设Android客户端拥有公钥PublicKey,服务器端拥有公钥PublicKey和私钥PrivateKey。</p>
-<p>3.安卓发送请求到服务器端：安卓随机生成Byte[]随机密码，假设RandomKey=“123456”，通过AES算法，对Json数据利用进行加密。</p>
-<p>4.但是此刻服务器并不知道客户端的RandomKey是什么，因此需要同时将Randomkey传给服务器，否则服务器无法通过AES对Json数据进行解密。但是如果直接发送请求，Randomkey就会暴露，所以要对RandomKey进行不可逆的RSA加密。</p>
-<p>5.安卓将使用Randomkey进行AES加密的Json数据，和使用PublicKey进行RSA加密的RandomKey通过HTTP传送到服务器端。数据请求工作完成。</p>
-<p>6.服务器端接收到AES加密的Json数据和Rsa加密的RandomKey数据。</p>
-<p>7.服务器通过私钥PrivateKey对加密后的RandomKey进行Rsa解密。得到安卓生成的原始Randomkey。</p>
-<p>8.利用原始的RandomKey对加密后的Json数据进行AES对称解密。至此已经得到安卓端发过来的原始Json数据。进行常规的服务器业务操作，然后将返回数据通过安卓端的RandomKey进行AES加密gouhou后，Response返回。</p>
-<p>9.安卓端接收到Response的数据后，利用之前本地生成的RandomKey直接进行AES解密即可。</p>
-<p>详细的流程图可以查看下图。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/265023-b64e781d365f1200.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="image"></p>
-<p>注意事项：</p>
-<p>1.在实际的开发过程中，发现RSA和AES有不同的密文生成标准，会不兼容IOS。IOS在RSA算法中需要的公钥与JAVA不同。详细的解决方案请查看：<a href="http://www.cnblogs.com/makemelike/articles/3802518.html" target="_blank" rel="noopener">http://www.cnblogs.com/makemelike/articles/3802518.html</a></p>
-<p>2.AES加密不可以使用超过128Byte的KEY，因为在jdk1.7以上的版本不支持超过128Byte的KEY。</p>
-<p>小结：从性能上来测，整个客户端送加密数据开始到解密得到回传的原始数据不超过300ms（Iphone4和Centos Java服务器传输测试）。本方案没有采用TOKEN的方式，或许以后用到。公钥如何更新也需要继续完善。</p>
-<p>附：具体的JAVA和IOS加密解密Demo迟点整理给出。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2017/12/05/aes-rsa加密机制/" data-id="cjnctqgi40002wknzt9rk9q85" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AES/">AES</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSA/">RSA</a></li></ul>
 
     </footer>
   </div>
@@ -522,10 +460,72 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2017/12/05/对称加密与非对称加密/" data-id="cjnctqgkr0034wknz5by4tv0q" class="article-share-link">Share</a>
+      <a data-url="https://yapengwen.github.io/2017/12/05/对称加密与非对称加密/" data-id="cjnctyr5p0032k4nzyuuzinsx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSA/">RSA</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-aes-rsa加密机制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/05/aes-rsa加密机制/" class="article-date">
+  <time datetime="2017-12-05T03:37:00.000Z" itemprop="datePublished">2017-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/加解密/">加解密</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/05/aes-rsa加密机制/">AES-RSA加密机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在服务器与终端设备进行HTTP通讯时，常常会被网络抓包、反编译（Android <a href="https://link.jianshu.com?t=http://idoog.me/?p=2933" target="_blank" rel="noopener">APK反编译工具</a>）等技术得到HTTP通讯接口地址和参数。为了确保信息的安全，我们采用AES+RSA组合的方式进行接口参数加密和解密。</p>
+<p>1.关于RSA加密机制：公钥用于对数据进行加密，私钥对数据进行解密，两者不可逆。公钥和私钥是同时生成的，一一对应。比如：A拥有公钥，B拥有公钥和私钥。A将数据通过公钥进行加密后，发送密文给B，B可以通过私钥和公钥进行解密。</p>
+<p>2.AES加密也叫对称加密：A用密码对数据进行AES加密后，B用同样的密码对密文进行AES解密。</p>
+<p>具体操作方法：</p>
+<p>1.在终端中采用openssl方式输入密钥的相关属性（公司名、邮箱等），然后在终端当前所在的地址下，生成公钥和私钥共7个文件（7个文件如何使用请看附录的拓展了链接）。</p>
+<p>2.此时假设Android客户端拥有公钥PublicKey,服务器端拥有公钥PublicKey和私钥PrivateKey。</p>
+<p>3.安卓发送请求到服务器端：安卓随机生成Byte[]随机密码，假设RandomKey=“123456”，通过AES算法，对Json数据利用进行加密。</p>
+<p>4.但是此刻服务器并不知道客户端的RandomKey是什么，因此需要同时将Randomkey传给服务器，否则服务器无法通过AES对Json数据进行解密。但是如果直接发送请求，Randomkey就会暴露，所以要对RandomKey进行不可逆的RSA加密。</p>
+<p>5.安卓将使用Randomkey进行AES加密的Json数据，和使用PublicKey进行RSA加密的RandomKey通过HTTP传送到服务器端。数据请求工作完成。</p>
+<p>6.服务器端接收到AES加密的Json数据和Rsa加密的RandomKey数据。</p>
+<p>7.服务器通过私钥PrivateKey对加密后的RandomKey进行Rsa解密。得到安卓生成的原始Randomkey。</p>
+<p>8.利用原始的RandomKey对加密后的Json数据进行AES对称解密。至此已经得到安卓端发过来的原始Json数据。进行常规的服务器业务操作，然后将返回数据通过安卓端的RandomKey进行AES加密gouhou后，Response返回。</p>
+<p>9.安卓端接收到Response的数据后，利用之前本地生成的RandomKey直接进行AES解密即可。</p>
+<p>详细的流程图可以查看下图。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/265023-b64e781d365f1200.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="image"></p>
+<p>注意事项：</p>
+<p>1.在实际的开发过程中，发现RSA和AES有不同的密文生成标准，会不兼容IOS。IOS在RSA算法中需要的公钥与JAVA不同。详细的解决方案请查看：<a href="http://www.cnblogs.com/makemelike/articles/3802518.html" target="_blank" rel="noopener">http://www.cnblogs.com/makemelike/articles/3802518.html</a></p>
+<p>2.AES加密不可以使用超过128Byte的KEY，因为在jdk1.7以上的版本不支持超过128Byte的KEY。</p>
+<p>小结：从性能上来测，整个客户端送加密数据开始到解密得到回传的原始数据不超过300ms（Iphone4和Centos Java服务器传输测试）。本方案没有采用TOKEN的方式，或许以后用到。公钥如何更新也需要继续完善。</p>
+<p>附：具体的JAVA和IOS加密解密Demo迟点整理给出。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/05/aes-rsa加密机制/" data-id="cjnctyr2x0001k4nz4ole8mjt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AES/">AES</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSA/">RSA</a></li></ul>
 
     </footer>
   </div>
@@ -565,59 +565,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2017/12/05/jprofiler_remote_linux/" data-id="cjnctqgjj001nwknz12wx0t40" class="article-share-link">Share</a>
+      <a data-url="https://yapengwen.github.io/2017/12/05/jprofiler_remote_linux/" data-id="cjnctyr4b001jk4nzppzihpgv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spring-boot_条件加载" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/17/spring-boot_条件加载/" class="article-date">
-  <time datetime="2017-10-17T03:37:00.000Z" itemprop="datePublished">2017-10-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/17/spring-boot_条件加载/">springboot根据不同的条件创建bean</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="springboot根据不同的条件创建bean，动态创建bean，-Conditional注解使用"><a href="#springboot根据不同的条件创建bean，动态创建bean，-Conditional注解使用" class="headerlink" title="springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用"></a>springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用</h2><p>这个需求应该也比较常见，在不同的条件下创建不同的bean，具体场景很多，能看到这篇的肯定懂我的意思。<br>倘若不了解spring4.X新加入的@Conditional注解的话，要实现不同条件创建不同的bean还是比较麻烦的，可能需要硬编码一些东西做if判断。那么现在有个@Conditional注解后，事情就简单多了。用法很简单，直接上代码。<br>新建一个springboot项目，添加一个Configuration标注的类，我们通过不同的条件表达式来创建bean。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tianyalei.condition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Conditional;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Conditional</span>(MyCondition.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">condition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"自定义的condition的match方法返回值为true时，才会进入该方法创建bean"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 该Abc class位于类路径上时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnClass</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">abc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnClass true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @ConditionalOnClass(Abc.class)</span></span><br><span class="line"><span class="comment">//    @Bean</span></span><br><span class="line"><span class="comment">//    public Abc newAbc() &#123;</span></span><br><span class="line"><span class="comment">//        System.err.println("ConditionalOnClass true");</span></span><br><span class="line"><span class="comment">//        return new Abc();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 存在Abc类的实例时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnBean</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">bean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnBean is exist"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">missBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnBean is missing"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 表达式为true时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnExpression</span>(value = <span class="string">"true"</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">expresssion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"expresssion is true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置文件属性是否为true</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty</span>(</span><br><span class="line">            value = &#123;<span class="string">"abc.property"</span>&#125;,</span><br><span class="line">            matchIfMissing = <span class="keyword">false</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">property</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"property is true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里面有个空类Abc.class，你可以就创建个叫Abc的类，里面是空的就行。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Condition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ConditionContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.AnnotatedTypeMetadata;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCondition</span> <span class="keyword">implements</span> <span class="title">Condition</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//判断当前系统是Mac，Windows，Linux</span></span><br><span class="line">        <span class="keyword">return</span> conditionContext.getEnvironment().getProperty(<span class="string">"os.name"</span>).contains(<span class="string">"Mac"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>@Conditional(MyCondition.class)</strong><br>这句代码可以标注在类上面，表示该类下面的所有@Bean都会启用配置<br>也可以标注在方法上面，只是对该方法启用配置</p>
-<p>除了自己自定义Condition之外，Spring还提供了很多Condition给我们用<br><strong>@ConditionalOnBean</strong>（仅仅在当前上下文中存在某个对象时，才会实例化一个Bean）<br><strong>@ConditionalOnClass</strong>（某个class位于类路径上，才会实例化一个Bean）<br><strong>@ConditionalOnExpression</strong>（当表达式为true的时候，才会实例化一个Bean）<br><strong>@ConditionalOnMissingBean</strong>（仅仅在当前上下文中不存在某个对象时，才会实例化一个Bean）<br><strong>@ConditionalOnMissingClass</strong>（某个class类路径上不存在的时候，才会实例化一个Bean）<br><strong>@ConditionalOnNotWebApplication</strong>（不是web应用）<br>以上是一些常用的注解，其实就是条件判断，如果为true了就创建Bean，为false就不创建，就这么简单。<br>这些注解里的条件可以是多个，也可以赋默认值，也可以标注在类上，如果标注在类上，则对类里的所有@Bean方法都生效。<br>其中@ConditionalOnProperty是指在application.yml里配置的属性是否为true，其他的几个都是对class的判断。<br>我在配置里加上abc.property = true这个配置就可以测试上面的代码了。<br>然后再来一个对类进行多个条件标注的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tianyalei.condition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(</span><br><span class="line">        value = &#123;<span class="string">"abc.property"</span>&#125;,</span><br><span class="line">        matchIfMissing = <span class="keyword">false</span></span><br><span class="line">)</span><br><span class="line"><span class="meta">@ConditionalOnClass</span>(Abc.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Multi</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(&#123;Abc.class&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"multi check"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"check"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>OK，代码很简单，运行看看结果<br><img src="https://yapengwen.github.io/img/20171011114902806.jpg" alt=""><br>可能上面的那些你用的地方不常见，那我来举一个我正在使用的例子。我的应用是基于SpringCloud的，在线上部署时有eureka来做注册中心，而在本地环境下，我的应用是单机的，不需要eureka，但是代码里已经引入了eureka了，每次启动就会自动去连接eureka，然后控制台就开始报错。虽然不影响功能，但是看着一直不停的报错也是不顺眼。<br>那么我就可以使用Condition注解来解决它。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wuweifeng wrote on 2017/11/25.</span></span><br><span class="line"><span class="comment"> * 根据部署环境动态决定是否启用eureka</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(value = <span class="string">"open.eureka"</span>)</span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JudgeEnableDiscoveryClient</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我把EnableDiscoveryClient这个注解单独放个类里，里面什么也不写，条件就是application.yml里配置的open.eureka<br>如果我只想让线上的环境开启eureka，那么我就在application-prod.yml里配上open.eureka=true，其他的yml什么也不写就行了。这样本地启动时就相当于没有开启EnableDiscoveryClient。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2017/10/17/spring-boot_条件加载/" data-id="cjnctqgjr001vwknz35czj8vp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
 
     </footer>
   </div>
@@ -695,10 +646,59 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yapengwen.github.io/2017/10/17/jetty_springMVC/" data-id="cjnctqgkp0033wknz3vgvvmey" class="article-share-link">Share</a>
+      <a data-url="https://yapengwen.github.io/2017/10/17/jetty_springMVC/" data-id="cjnctyr5j002yk4nziapu6v1t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jetty/">jetty</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring-boot_条件加载" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/17/spring-boot_条件加载/" class="article-date">
+  <time datetime="2017-10-17T03:37:00.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/spring-boot_条件加载/">springboot根据不同的条件创建bean</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="springboot根据不同的条件创建bean，动态创建bean，-Conditional注解使用"><a href="#springboot根据不同的条件创建bean，动态创建bean，-Conditional注解使用" class="headerlink" title="springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用"></a>springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用</h2><p>这个需求应该也比较常见，在不同的条件下创建不同的bean，具体场景很多，能看到这篇的肯定懂我的意思。<br>倘若不了解spring4.X新加入的@Conditional注解的话，要实现不同条件创建不同的bean还是比较麻烦的，可能需要硬编码一些东西做if判断。那么现在有个@Conditional注解后，事情就简单多了。用法很简单，直接上代码。<br>新建一个springboot项目，添加一个Configuration标注的类，我们通过不同的条件表达式来创建bean。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tianyalei.condition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Conditional;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Conditional</span>(MyCondition.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">condition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"自定义的condition的match方法返回值为true时，才会进入该方法创建bean"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 该Abc class位于类路径上时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnClass</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">abc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnClass true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @ConditionalOnClass(Abc.class)</span></span><br><span class="line"><span class="comment">//    @Bean</span></span><br><span class="line"><span class="comment">//    public Abc newAbc() &#123;</span></span><br><span class="line"><span class="comment">//        System.err.println("ConditionalOnClass true");</span></span><br><span class="line"><span class="comment">//        return new Abc();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 存在Abc类的实例时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnBean</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">bean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnBean is exist"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">missBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnBean is missing"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 表达式为true时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnExpression</span>(value = <span class="string">"true"</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">expresssion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"expresssion is true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置文件属性是否为true</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty</span>(</span><br><span class="line">            value = &#123;<span class="string">"abc.property"</span>&#125;,</span><br><span class="line">            matchIfMissing = <span class="keyword">false</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">property</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"property is true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里面有个空类Abc.class，你可以就创建个叫Abc的类，里面是空的就行。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Condition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ConditionContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.AnnotatedTypeMetadata;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCondition</span> <span class="keyword">implements</span> <span class="title">Condition</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//判断当前系统是Mac，Windows，Linux</span></span><br><span class="line">        <span class="keyword">return</span> conditionContext.getEnvironment().getProperty(<span class="string">"os.name"</span>).contains(<span class="string">"Mac"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>@Conditional(MyCondition.class)</strong><br>这句代码可以标注在类上面，表示该类下面的所有@Bean都会启用配置<br>也可以标注在方法上面，只是对该方法启用配置</p>
+<p>除了自己自定义Condition之外，Spring还提供了很多Condition给我们用<br><strong>@ConditionalOnBean</strong>（仅仅在当前上下文中存在某个对象时，才会实例化一个Bean）<br><strong>@ConditionalOnClass</strong>（某个class位于类路径上，才会实例化一个Bean）<br><strong>@ConditionalOnExpression</strong>（当表达式为true的时候，才会实例化一个Bean）<br><strong>@ConditionalOnMissingBean</strong>（仅仅在当前上下文中不存在某个对象时，才会实例化一个Bean）<br><strong>@ConditionalOnMissingClass</strong>（某个class类路径上不存在的时候，才会实例化一个Bean）<br><strong>@ConditionalOnNotWebApplication</strong>（不是web应用）<br>以上是一些常用的注解，其实就是条件判断，如果为true了就创建Bean，为false就不创建，就这么简单。<br>这些注解里的条件可以是多个，也可以赋默认值，也可以标注在类上，如果标注在类上，则对类里的所有@Bean方法都生效。<br>其中@ConditionalOnProperty是指在application.yml里配置的属性是否为true，其他的几个都是对class的判断。<br>我在配置里加上abc.property = true这个配置就可以测试上面的代码了。<br>然后再来一个对类进行多个条件标注的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tianyalei.condition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(</span><br><span class="line">        value = &#123;<span class="string">"abc.property"</span>&#125;,</span><br><span class="line">        matchIfMissing = <span class="keyword">false</span></span><br><span class="line">)</span><br><span class="line"><span class="meta">@ConditionalOnClass</span>(Abc.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Multi</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(&#123;Abc.class&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"multi check"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"check"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>OK，代码很简单，运行看看结果<br><img src="https://yapengwen.github.io/img/20171011114902806.jpg" alt=""><br>可能上面的那些你用的地方不常见，那我来举一个我正在使用的例子。我的应用是基于SpringCloud的，在线上部署时有eureka来做注册中心，而在本地环境下，我的应用是单机的，不需要eureka，但是代码里已经引入了eureka了，每次启动就会自动去连接eureka，然后控制台就开始报错。虽然不影响功能，但是看着一直不停的报错也是不顺眼。<br>那么我就可以使用Condition注解来解决它。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wuweifeng wrote on 2017/11/25.</span></span><br><span class="line"><span class="comment"> * 根据部署环境动态决定是否启用eureka</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(value = <span class="string">"open.eureka"</span>)</span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JudgeEnableDiscoveryClient</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我把EnableDiscoveryClient这个注解单独放个类里，里面什么也不写，条件就是application.yml里配置的open.eureka<br>如果我只想让线上的环境开启eureka，那么我就在application-prod.yml里配上open.eureka=true，其他的yml什么也不写就行了。这样本地启动时就相当于没有开启EnableDiscoveryClient。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/10/17/spring-boot_条件加载/" data-id="cjnctyr4s0023k4nz2beonlhf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
 
     </footer>
   </div>
