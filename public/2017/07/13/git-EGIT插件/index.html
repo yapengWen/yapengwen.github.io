@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Eclipse上GIT插件EGIT使用手册 | Calm sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装EGIT插件   http://download.eclipse.org/egit/updates/ 或者使用Eclipse Marketplace，搜索EGit   二_使用EGIT前的配置 配置个人信息，最重要的是user.name和user.email l  Preferences &amp;gt; Team &amp;gt; Git &amp;gt; Configuration l  New Entry">
+<meta name="keywords" content="EGIT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eclipse上GIT插件EGIT使用手册">
+<meta property="og:url" content="https://yapengwen.github.io/2017/07/13/git-EGIT插件/index.html">
+<meta property="og:site_name" content="Calm sea">
+<meta property="og:description" content="安装EGIT插件   http://download.eclipse.org/egit/updates/ 或者使用Eclipse Marketplace，搜索EGit   二_使用EGIT前的配置 配置个人信息，最重要的是user.name和user.email l  Preferences &amp;gt; Team &amp;gt; Git &amp;gt; Configuration l  New Entry">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150918_828.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150918_954.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150918_929.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150919_238.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150919_479.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150919_503.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150921_350.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150921_322.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150922_449.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150922_761.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150922_101.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150922_31.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150923_748.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150923_948.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150923_440.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150924_921.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150924_243.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150924_728.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150925_422.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150925_598.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150925_746.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150925_350.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150927_97.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150927_216.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150928_348.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150928_486.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150929_452.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150929_538.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150930_822.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150931_30.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150932_652.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150932_503.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150932_873.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150933_729.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150934_243.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150934_504.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150935_650.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150935_999.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150936_685.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150936_554.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150937_374.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150937_761.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150938_25.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150939_41.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150939_428.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150940_565.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150941_256.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150941_83.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150942_300.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150943_94.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150943_24.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150943_894.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150944_289.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150945_104.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150945_319.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150946_936.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150946_102.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150948_358.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150949_351.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150950_893.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150950_155.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150951_869.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150952_988.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150953_677.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150954_184.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150954_15.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150955_499.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150956_318.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150956_153.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150956_815.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150957_357.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150957_879.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150958_872.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150958_662.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150958_719.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150958_311.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150959_537.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150959_679.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150959_42.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725151000_90.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725151000_133.gif">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725151001_716.gif">
+<meta property="og:updated_time" content="2018-10-17T05:48:51.084Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Eclipse上GIT插件EGIT使用手册">
+<meta name="twitter:description" content="安装EGIT插件   http://download.eclipse.org/egit/updates/ 或者使用Eclipse Marketplace，搜索EGit   二_使用EGIT前的配置 配置个人信息，最重要的是user.name和user.email l  Preferences &amp;gt; Team &amp;gt; Git &amp;gt; Configuration l  New Entry">
+<meta name="twitter:image" content="http://static.open-open.com/lib/uploadImg/20140725/20140725150918_828.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Calm sea" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Calm sea</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Whatever is worth doing is worth doing well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yapengwen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git-EGIT插件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/13/git-EGIT插件/" class="article-date">
+  <time datetime="2017-07-13T08:21:00.000Z" itemprop="datePublished">2017-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Eclipse上GIT插件EGIT使用手册
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装EGIT插件</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150918_828.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150918_954.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><a href="http://download.eclipse.org/egit/updates/" target="_blank" rel="noopener">http://download.eclipse.org/egit/updates/</a></p>
+<p>或者使用Eclipse Marketplace，搜索EGit</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150918_929.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150919_238.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<h3 id="二-使用EGIT前的配置"><a href="#二-使用EGIT前的配置" class="headerlink" title="二_使用EGIT前的配置"></a>二_使用EGIT前的配置</h3><p><a name="_Toc315382081" style="color:#336699;text-decoration:underline;font-family:Arial;line-height:26px;"></a></p>
+<p>配置个人信息，最重要的是user.name和user.email</p>
+<p>l  Preferences &gt; Team &gt; Git &gt; Configuration</p>
+<p>l  New Entry</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150919_479.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150919_503.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<h3 id="三-新建GIT仓库"><a href="#三-新建GIT仓库" class="headerlink" title="三_新建GIT仓库"></a>三_新建GIT仓库</h3><p>新建NC module project</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150921_350.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>l  File &gt; Team &gt; Share Project 选择GIT</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150921_322.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150922_449.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>创建仓库后，在$workspace\demo目录下的.git文件夹，就是git的仓库地址。和CVS、SVN不同，GIT不会在每一个目录下建立版本控制文件夹，仅在根目录下建立仓库</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150922_761.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>同时，eclipse中的project也建立git版本控制，此时未创建分支，处于NO-HEAD状态</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150922_101.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>文件夹中的符号”?”表示此文件夹处于untracked状态，这样就成功创建GIT仓库。</p>
+<h3 id="四-配置-gitignore"><a href="#四-配置-gitignore" class="headerlink" title="四_配置.gitignore"></a>四_配置.gitignore</h3><p>此时我们尝试做一次提交</p>
+<p>l  Team -&gt; Commit…</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150922_31.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>如上图所示，Author和Committer会默认为Git配置的用户信息。下面的Files窗口中可以看到此次提交的文件，其中有非常多带有NC_HOME的文件，此时可以猜测出，在我们的project中链接的NC_HOME也被GIT默认到版本控制中了，如下图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150923_748.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>显然NC_HOME和out是不需要进行版本控制的，我们可以通过配置.gitignore来排除这两个文件夹</p>
+<p>打开Navigator窗口，在project根目录中添加.gitignore文件，将需要排除控制的目录写入.gitignore文件中</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150923_948.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>再次尝试commit，需要提交的文件已经被过滤</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150923_440.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>首次提交后，会自动生成master分支</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150924_921.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>然后在public中新建一个文件，可以看到图标依然是问号，处于untracked状态，即git没有对此文件进行监控</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150924_243.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>通过Team -&gt; Add to index可以将文件加入git索引，进行版本监控</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150924_728.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>可以看到图标显示也有了变化（EGIT中只要Commit就可以默认将untracked的文件添加到索引再提交更新，不需要分开操作）</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150925_422.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>也可以通过Team -&gt; Untrack将文件从索引控制中排除。</p>
+<p>将此次新增的文件commit到仓库中，文件将处于unmodified状态，或者说，这就是一种staged状态</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150925_598.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>然后修改文件的内容，文件将处于modified状态</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150925_746.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<h3 id="五-查看历史记录"><a href="#五-查看历史记录" class="headerlink" title="五_查看历史记录"></a>五_查看历史记录</h3><p><span style="color:#333333;font-family:Arial;line-height:26px;">Team -&gt; Show in history可以查看版本历史提交记录</span></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150925_350.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150927_97.gif" alt=" Eclipse上GIT插件EGIT使用手册 " title="点击查看原始大小图片"></p>
+<p>可以选择对比模式</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150927_216.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150928_348.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<h3 id="六-远程GIT仓库"><a href="#六-远程GIT仓库" class="headerlink" title="六_远程GIT仓库"></a>六_远程GIT仓库</h3><p><span style="color:#333333;font-family:Arial;line-height:26px;">此 小结的前提是已经搭建GIT服务器，并通过SSH协议连接，可参看文档《RHEL下搭建GIT服务器》《WindowsXP下搭建GIT服务器》《GIT 服务器使用基础》。本文使用RHEL5.5系统下的GIT-2012-01-11，用户root/password，GIT仓库统一存放在/app /gitspace目录下。</span></p>
+<p>首先通过shell工具连接到服务器，建立空仓库gitdemo，此时的ssh访问地址如下,分别由协议名称、用户名、IP、端口、git仓库目录组成。</p>
+<p>ssh:<a href="mailto://root@192.168.1.101" target="_blank" rel="noopener">//root@192.168.1.101</a>:22/app/gitspace/gitdemo</p>
+<p>打开GIT资源库窗口，选择克隆资源库</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150928_486.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150929_452.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150929_538.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150930_822.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150931_30.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>现在已经把远程的GIT仓库克隆到本地，接下来需要将仓库检出为NC模块项目。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150932_652.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150932_503.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>最后得到gitdemo模块项目，分支是mirror</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150932_873.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<h3 id="七-推送远程仓库"><a href="#七-推送远程仓库" class="headerlink" title="七_推送远程仓库"></a>七_推送远程仓库</h3><p>克隆服务器端仓库后，会在本地建立一个一样的仓库，称本地仓库。在本地进行commit操作将把更新提交到本地仓库，然后可以将服务器端的更新pull到本地仓库进行合并，最后将合并好的本地仓库push到服务器端，这样就进行了一次远程提交。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150933_729.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>先提交一次到本地仓库</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150934_243.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>然后push到服务器端的mirror分支，Team -&gt; remote -&gt; Push</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150934_504.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>完成推送后，可以在服务器端mirror镜像的log中查看到此次记录</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150935_650.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<h3 id="八-解决推送冲突"><a href="#八-解决推送冲突" class="headerlink" title="八_解决推送冲突"></a>八_解决推送冲突</h3><p>多人协作开发的情况下，往服务器推送更新时难免出现冲突，所以推送之前需要解决服务器端的最新版本和本地仓库的冲突。Pull操作就是把服务器端的更新拉拢到本地仓库进行合并，解决好合并冲突后，就可以顺利push到服务器分支了。</p>
+<p>假设现在Mairo兄弟在用GIT协作开发NewSuperMairoBro游戏，目前服务器端的mushroom.java文件的内容如下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150935_999.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>MairoBro克隆出代码后，Mairo哥哥做了如下修改</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150936_685.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>Mairo弟弟做了如下修改</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150936_554.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>然后Mairo弟弟先push代码，Mairo哥哥使用pull来合并本地仓库和远程仓库，将发行文件出现冲突，此时GIT会自动合并冲突的文件，如下图所示：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150937_374.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150937_761.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150938_25.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>很明显自动合并的冲突文件不能直接使用，我们可以手动调整，右键发生冲突的文件，选择Team -&gt; Merge Tool</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150939_41.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>第一项是将GIT自动合并过的文件和服务器端文件进行对比</p>
+<p>第二项是用本地最新版本的文件和服务器端文件进行对比，建议用此项</p>
+<p>接下来就是熟悉的对比界面</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150939_428.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>Mairo哥哥将冲突文件修改如下</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150940_565.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>然后右键点击此冲突文件，选择Team -&gt; Add to index再次将文件加入索引控制，此时文件已经不是冲突状态，并且可以进行提交并push到服务器端</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150941_256.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>解决合并冲突后，Mairo弟弟只需要将服务器中合并后的版本pull到本地，就完成了一次协作开发的代码合并。从历史记录中可以看到，从mushroom开始历史进入分支，先是mushroomA的记录，然后是mushroomB的记录，最后历史分支合并。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150941_83.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<h3 id="九-Rebase和Merge的区别"><a href="#九-Rebase和Merge的区别" class="headerlink" title="九_Rebase和Merge的区别"></a>九_Rebase和Merge的区别</h3><p>Rebase和Merge操作最终的结果是一样的，但是实现原理不一样。</p>
+<p>从上面的MairoBro例子可以知道pull大概对历史记录进行了怎样的合并操作，其实默认pull的操作就是一个分支的merge操作，如下图重现一下：</p>
+<p>Mairo弟弟的提交记录如下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150942_300.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>Mairo哥哥的提交记录如下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150943_94.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>首先是Mairo弟弟把更新push到服务器，这样服务器端的记录就和Mairo弟弟本地的记录是一样的，接着Mairo哥哥执行pull操作，现在分析下pull是如何操作的。</p>
+<p>l  pull默认就是先把服务器端的最新记录更新到本地的Remote Tracking中对应的mirror分支</p>
+<p>l  接着对Local的mirror分支和Remote Tracking的mirror分支进行merge操作</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150943_24.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>Merge操作后的结果就是会新增加一个merge记录节点，如下所示：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150943_894.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>从上图可以看出，mushroomA是在mushroomB之前的，这个时间关系不取决于谁先执行push，而取决于本地仓库中谁先执行commit。所以merge会按照时间顺序严格的记录每一次commit。</p>
+<p>接下来看看rebase，其实rebase也是把两个分支进行合并的操作，当Mairo弟弟push更新后，服务器端的mirror分支的历史如下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150944_289.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>Mairo哥哥本地的历史如下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150945_104.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>现在Mairo哥哥不是执行merge操作，而是执行rebase操作，最后结果如下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150945_319.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>很明显的区别是没有出现分支的记录，而且注意到mushroomA*，请注意这个记录和mushroomA不是同一个记录，我们先分析下rebase操作下，Mairo哥哥的历史记录都做了哪些变化：</p>
+<p>l  先将当前分支的更新部分保存到临时区域，而当前分支重置到上一次pull的记录</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150946_936.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>l  然后将服务器端的更新添加到当前分支，此时当前分支和服务器端分支是一样的</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150946_102.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>l  最后将原分支的更新部分mushroomA提交到当前分支的后面，就是要在mushroomB的后面添加mushroomA的更新，当然此时更新记录已经不是之前的mushroomA了，如果出现冲突则使用对比工具解决冲突，最后记录变成mushroomA*。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150948_358.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><span style="color:#333333;font-family:Arial;line-height:26px;">如 果Mairo哥哥提交过mushroomA1、mushroomA2、mushroomA3，那么执行rebase后会对mushroomA1、 mushroomA2、mushroomA3分别顺序执行上图所示的合并，最后记录为mushroomA1<em>、mushroomA2</em>、 mushroomA3*。很显然rebase操作更复杂，冲突的概率也更高，并且不是按照时间顺序记录。</span></p>
+<h3 id="十-Rebase和Merge如何选择的简单解析"><a href="#十-Rebase和Merge如何选择的简单解析" class="headerlink" title="十_Rebase和Merge如何选择的简单解析"></a>十_Rebase和Merge如何选择的简单解析</h3><p>此小结为什么说是简单解析呢，因为rebase和merge的选择问题讨论比较激烈，笔者也没有一个定论，而且git也处于研究发展阶段，很多理论还没有完全的纯熟。</p>
+<p>对于一个多人开发团队频繁提交更新的情况，如果使用merge会使得历史线图非常复杂，并且merge一次就会新增一个记录点，如果使用rebase就是完全的线性开发。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150949_351.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>上图所示是Merge和Rebase的两个结果，显然你不想要merge的混乱结果吧，你能告诉我merge图中那条线是master分支吗？</p>
+<p>所以给出如下建议，如果同一文件反复修改或提交次数比较多，预期会出现很多的conflict，那么可以使用merge合并，仅需要解决一次冲突即可（不 过，大范围主题式的修改，是不是应该事先就新开一个分支呢？）；如果修改范围小，预期conflict少，则建议使用rebase。</p>
+<p>EGIT中默认的pull操作是Fetch+Merge，如果要用rebase，可以分开操作。先执行Fetch更新remote tracking，再执行rebase进行合并（下一小节将介绍rebase操作）。或者修改pull的默认操作，在.git/config文件中配置：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150950_893.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>上述配置只对mirror分支有效，也可做全局配置，在$HOME/.gitconfig中配置，windows系统如果没有配置HOME变量的话就默认在$documents and settings/ USER目录下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150950_155.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<h3 id="十一-Fetch和Rebase"><a href="#十一-Fetch和Rebase" class="headerlink" title="十一_Fetch和Rebase"></a>十一_Fetch和Rebase</h3><p>MairoBro来做fetch和rebase的测试，首先Mairo弟弟在client中添加文件OPQ分别提交，并push到服务器，如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150951_869.gif" alt=" Eclipse上GIT插件EGIT使用手册 "><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150952_988.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>此时服务器端的历史已经被更新，但是Mairo哥哥的remote tracking中mirror分支并没有更新到最新的记录，如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150953_677.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>所以需要更新remote tracking中的分支，使得它与服务器端的分支同步，右键点击资源库选择Fetch</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150954_184.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150954_15.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>这样就更新了本地的remote tracking中的分支，使得它和服务器端分支同步。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150955_499.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>然后Mairo哥哥在本地的private中添加文件ABC，并分别提交到本地仓库中。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150956_318.gif" alt=" Eclipse上GIT插件EGIT使用手册 "><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150956_153.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>然后将本地mirror分支和remote tracking中的mirror分支进行rebase，先checkout本地mirror分支 ，然后右键点击选择Rebase</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150956_815.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150957_357.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150957_879.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150958_872.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>如上图可以看到历史记录的顺序是OPQABC，已经rebase成功，接着push到服务器即可。</p>
+<h3 id="十二-重置功能"><a href="#十二-重置功能" class="headerlink" title="十二_重置功能"></a>十二_重置功能</h3><p>GIT中有三种重置功能，分别是soft、mixed、hard，区别如下：</p>
+<p>l  <strong>Soft - </strong>当前分支重置到指定commit记录位置，索引和工作树不变；</p>
+<p>l  <strong>Mixed - </strong>当前分支重置到指定commit记录位置，索引被更新，工作树不变；</p>
+<p>l  <strong>Hard - </strong>当前分支重置到指定commit记录位置，索引和工作树都更新。</p>
+<p>貌似不好理解，首先要理解GIT的三个区域（工作树、索引区、仓库），可以参考文档《GIT简介》。</p>
+<p>先做soft的测试，新建Soft.java文件，可以看到此文件未添加到索引控制</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150958_662.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>先进行一次提交，提交后在History窗口中重置此次提交，如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150958_719.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>重置后查看工作树，如图</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150958_311.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>从上图可以看出，soft文件还存在，说明重置没有改变工作树，而且soft文件不是“问号”图标，说明已经添加到索引，说明索引也没有变。唯一重置的是历史记录。</p>
+<p>然后新建Mixed.java文件，此时Mixed.java也没有添加到索引控制，然后提交。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150959_537.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>在History窗口中重置</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150959_679.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>重置后查看工作树结果如下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725150959_42.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>从上图可以看出，Mixed.java文件还存在，说明工作树没有改变，但是文件状态是untracked，说明索引被更新，此时文件没有添加索引控制。</p>
+<p>最后来看hard重置，新建Hard.java文件，此时文件没有添加索引，然后提交。</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725151000_90.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>在History界面重置此次提交，如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725151000_133.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>重置后再查看工作树，结果如下：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20140725/20140725151001_716.gif" alt=" Eclipse上GIT插件EGIT使用手册 "></p>
+<p>本文转自<a href="http://blog.csdn.net/luckarecs/article/details/7427605" target="_blank" rel="noopener">http://blog.csdn.net/luckarecs/article/details/7427605</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/07/13/git-EGIT插件/" data-id="cjnctqglh003jwknzjlj2ed4e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EGIT/">EGIT</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/17/python-anaconda的使用及配置方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Anaconda的使用及配置方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/13/MyBatis-generator/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MyBatis自动生成工具generator详细使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-mvc/">spring mvc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/加解密/">加解密</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/流程图/">流程图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AES/">AES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DRUID/">DRUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EGIT/">EGIT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arithmetic/">arithmetic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jetty/">jetty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AES/" style="font-size: 10px;">AES</a> <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/DRUID/" style="font-size: 10px;">DRUID</a> <a href="/tags/EGIT/" style="font-size: 10px;">EGIT</a> <a href="/tags/GitHub/" style="font-size: 20px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/RabbitMQ/" style="font-size: 15px;">RabbitMQ</a> <a href="/tags/RocketMQ/" style="font-size: 10px;">RocketMQ</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jetty/" style="font-size: 10px;">jetty</a> <a href="/tags/jprofiler/" style="font-size: 10px;">jprofiler</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/17/java设计模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 yapengWen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿<% if (site.tags.length){ %>
+  <div class="widget-wrap">
+    <h3 class="widget-title">About Me</h3>
+    <div class="widget">
+    	yapengWen
+      邮箱：wenyapenggo@163.com<br />
+    </div>
+  </div>
+<% } %>

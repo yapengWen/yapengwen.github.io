@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>springboot根据不同的条件创建bean | Calm sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用这个需求应该也比较常见，在不同的条件下创建不同的bean，具体场景很多，能看到这篇的肯定懂我的意思。倘若不了解spring4.X新加入的@Conditional注解的话，要实现不同条件创建不同的bean还是比较麻烦的，可能需要硬编码一些东西做if判断。那么现在有个@Conditional注解后，事情就">
+<meta name="keywords" content="springboot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot根据不同的条件创建bean">
+<meta property="og:url" content="https://yapengwen.github.io/2017/10/17/spring-boot_条件加载/index.html">
+<meta property="og:site_name" content="Calm sea">
+<meta property="og:description" content="springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用这个需求应该也比较常见，在不同的条件下创建不同的bean，具体场景很多，能看到这篇的肯定懂我的意思。倘若不了解spring4.X新加入的@Conditional注解的话，要实现不同条件创建不同的bean还是比较麻烦的，可能需要硬编码一些东西做if判断。那么现在有个@Conditional注解后，事情就">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://yapengwen.github.io/img/20171011114902806.jpg">
+<meta property="og:updated_time" content="2018-10-17T06:06:24.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springboot根据不同的条件创建bean">
+<meta name="twitter:description" content="springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用这个需求应该也比较常见，在不同的条件下创建不同的bean，具体场景很多，能看到这篇的肯定懂我的意思。倘若不了解spring4.X新加入的@Conditional注解的话，要实现不同条件创建不同的bean还是比较麻烦的，可能需要硬编码一些东西做if判断。那么现在有个@Conditional注解后，事情就">
+<meta name="twitter:image" content="https://yapengwen.github.io/img/20171011114902806.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Calm sea" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Calm sea</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Whatever is worth doing is worth doing well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yapengwen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-spring-boot_条件加载" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/17/spring-boot_条件加载/" class="article-date">
+  <time datetime="2017-10-17T03:37:00.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      springboot根据不同的条件创建bean
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="springboot根据不同的条件创建bean，动态创建bean，-Conditional注解使用"><a href="#springboot根据不同的条件创建bean，动态创建bean，-Conditional注解使用" class="headerlink" title="springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用"></a>springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用</h2><p>这个需求应该也比较常见，在不同的条件下创建不同的bean，具体场景很多，能看到这篇的肯定懂我的意思。<br>倘若不了解spring4.X新加入的@Conditional注解的话，要实现不同条件创建不同的bean还是比较麻烦的，可能需要硬编码一些东西做if判断。那么现在有个@Conditional注解后，事情就简单多了。用法很简单，直接上代码。<br>新建一个springboot项目，添加一个Configuration标注的类，我们通过不同的条件表达式来创建bean。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tianyalei.condition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Conditional;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Conditional</span>(MyCondition.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">condition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"自定义的condition的match方法返回值为true时，才会进入该方法创建bean"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 该Abc class位于类路径上时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnClass</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">abc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnClass true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @ConditionalOnClass(Abc.class)</span></span><br><span class="line"><span class="comment">//    @Bean</span></span><br><span class="line"><span class="comment">//    public Abc newAbc() &#123;</span></span><br><span class="line"><span class="comment">//        System.err.println("ConditionalOnClass true");</span></span><br><span class="line"><span class="comment">//        return new Abc();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 存在Abc类的实例时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnBean</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">bean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnBean is exist"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">missBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnBean is missing"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 表达式为true时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnExpression</span>(value = <span class="string">"true"</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">expresssion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"expresssion is true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置文件属性是否为true</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty</span>(</span><br><span class="line">            value = &#123;<span class="string">"abc.property"</span>&#125;,</span><br><span class="line">            matchIfMissing = <span class="keyword">false</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">property</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"property is true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里面有个空类Abc.class，你可以就创建个叫Abc的类，里面是空的就行。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Condition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ConditionContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.AnnotatedTypeMetadata;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCondition</span> <span class="keyword">implements</span> <span class="title">Condition</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//判断当前系统是Mac，Windows，Linux</span></span><br><span class="line">        <span class="keyword">return</span> conditionContext.getEnvironment().getProperty(<span class="string">"os.name"</span>).contains(<span class="string">"Mac"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>@Conditional(MyCondition.class)</strong><br>这句代码可以标注在类上面，表示该类下面的所有@Bean都会启用配置<br>也可以标注在方法上面，只是对该方法启用配置</p>
+<p>除了自己自定义Condition之外，Spring还提供了很多Condition给我们用<br><strong>@ConditionalOnBean</strong>（仅仅在当前上下文中存在某个对象时，才会实例化一个Bean）<br><strong>@ConditionalOnClass</strong>（某个class位于类路径上，才会实例化一个Bean）<br><strong>@ConditionalOnExpression</strong>（当表达式为true的时候，才会实例化一个Bean）<br><strong>@ConditionalOnMissingBean</strong>（仅仅在当前上下文中不存在某个对象时，才会实例化一个Bean）<br><strong>@ConditionalOnMissingClass</strong>（某个class类路径上不存在的时候，才会实例化一个Bean）<br><strong>@ConditionalOnNotWebApplication</strong>（不是web应用）<br>以上是一些常用的注解，其实就是条件判断，如果为true了就创建Bean，为false就不创建，就这么简单。<br>这些注解里的条件可以是多个，也可以赋默认值，也可以标注在类上，如果标注在类上，则对类里的所有@Bean方法都生效。<br>其中@ConditionalOnProperty是指在application.yml里配置的属性是否为true，其他的几个都是对class的判断。<br>我在配置里加上abc.property = true这个配置就可以测试上面的代码了。<br>然后再来一个对类进行多个条件标注的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tianyalei.condition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(</span><br><span class="line">        value = &#123;<span class="string">"abc.property"</span>&#125;,</span><br><span class="line">        matchIfMissing = <span class="keyword">false</span></span><br><span class="line">)</span><br><span class="line"><span class="meta">@ConditionalOnClass</span>(Abc.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Multi</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(&#123;Abc.class&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"multi check"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"check"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>OK，代码很简单，运行看看结果<br><img src="https://yapengwen.github.io/img/20171011114902806.jpg" alt=""><br>可能上面的那些你用的地方不常见，那我来举一个我正在使用的例子。我的应用是基于SpringCloud的，在线上部署时有eureka来做注册中心，而在本地环境下，我的应用是单机的，不需要eureka，但是代码里已经引入了eureka了，每次启动就会自动去连接eureka，然后控制台就开始报错。虽然不影响功能，但是看着一直不停的报错也是不顺眼。<br>那么我就可以使用Condition注解来解决它。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wuweifeng wrote on 2017/11/25.</span></span><br><span class="line"><span class="comment"> * 根据部署环境动态决定是否启用eureka</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(value = <span class="string">"open.eureka"</span>)</span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JudgeEnableDiscoveryClient</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我把EnableDiscoveryClient这个注解单独放个类里，里面什么也不写，条件就是application.yml里配置的open.eureka<br>如果我只想让线上的环境开启eureka，那么我就在application-prod.yml里配上open.eureka=true，其他的yml什么也不写就行了。这样本地启动时就相当于没有开启EnableDiscoveryClient。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/10/17/spring-boot_条件加载/" data-id="cjnctqgjr001vwknz35czj8vp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/05/jprofiler_remote_linux/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          jprofiler_监控远程linux服务器的JVM进程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/17/jetty_springMVC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">内置jetty服务</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-mvc/">spring mvc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/加解密/">加解密</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/流程图/">流程图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AES/">AES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DRUID/">DRUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EGIT/">EGIT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arithmetic/">arithmetic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jetty/">jetty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AES/" style="font-size: 10px;">AES</a> <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/DRUID/" style="font-size: 10px;">DRUID</a> <a href="/tags/EGIT/" style="font-size: 10px;">EGIT</a> <a href="/tags/GitHub/" style="font-size: 20px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/RabbitMQ/" style="font-size: 15px;">RabbitMQ</a> <a href="/tags/RocketMQ/" style="font-size: 10px;">RocketMQ</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jetty/" style="font-size: 10px;">jetty</a> <a href="/tags/jprofiler/" style="font-size: 10px;">jprofiler</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/17/java设计模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 yapengWen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

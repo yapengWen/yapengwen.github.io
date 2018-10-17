@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>内置jetty服务 | Calm sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Jetty 是高性能的 Servlet 容器，经常会在开发环境中作为服务器来使用。在本文中，我们将使用 Spring Web MVC 技术来实现 REST 接口，并使用 使用 Jetty 作为内嵌服务器，方便测试。 接口设计我们将会在系统中实现两个接口：  GET http://localhost:8080/hello GET http://localhost:8080/hello/way  其中">
+<meta name="keywords" content="jetty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内置jetty服务">
+<meta property="og:url" content="https://yapengwen.github.io/2017/10/17/jetty_springMVC/index.html">
+<meta property="og:site_name" content="Calm sea">
+<meta property="og:description" content="Jetty 是高性能的 Servlet 容器，经常会在开发环境中作为服务器来使用。在本文中，我们将使用 Spring Web MVC 技术来实现 REST 接口，并使用 使用 Jetty 作为内嵌服务器，方便测试。 接口设计我们将会在系统中实现两个接口：  GET http://localhost:8080/hello GET http://localhost:8080/hello/way  其中">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://yapengwen.github.io/https://yapengwen.github.io/img/20180327-mvc-rest-hello.jpg">
+<meta property="og:image" content="https://yapengwen.github.io/https://yapengwen.github.io/img/20180327-mvc-rest-json.jpg">
+<meta property="og:updated_time" content="2018-10-17T06:06:24.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内置jetty服务">
+<meta name="twitter:description" content="Jetty 是高性能的 Servlet 容器，经常会在开发环境中作为服务器来使用。在本文中，我们将使用 Spring Web MVC 技术来实现 REST 接口，并使用 使用 Jetty 作为内嵌服务器，方便测试。 接口设计我们将会在系统中实现两个接口：  GET http://localhost:8080/hello GET http://localhost:8080/hello/way  其中">
+<meta name="twitter:image" content="https://yapengwen.github.io/https://yapengwen.github.io/img/20180327-mvc-rest-hello.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Calm sea" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Calm sea</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Whatever is worth doing is worth doing well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yapengwen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jetty_springMVC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/17/jetty_springMVC/" class="article-date">
+  <time datetime="2017-10-17T03:37:00.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      内置jetty服务
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Jetty 是高性能的 Servlet 容器，经常会在开发环境中作为服务器来使用。在本文中，我们将使用 Spring Web MVC 技术来实现 REST 接口，并使用 使用 Jetty 作为内嵌服务器，方便测试。</p>
+<h2 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h2><p>我们将会在系统中实现两个接口：</p>
+<ul>
+<li>GET <a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a></li>
+<li>GET <a href="http://localhost:8080/hello/way" target="_blank" rel="noopener">http://localhost:8080/hello/way</a></li>
+</ul>
+<p>其中，第一个接口“/hello”将会返回“Hello World!” 的字符串；而第二个接口“/hello/way”则会返回一个包含用户信息的JSON字符串。</p>
+<h2 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h2><p>我们需要在应用中添加如下依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">    &lt;spring.version&gt;5.0.4.RELEASE&lt;/spring.version&gt;</span><br><span class="line">    &lt;jetty.version&gt;9.4.9.v20180320&lt;/jetty.version&gt;</span><br><span class="line">    &lt;jackson.version&gt;2.9.4&lt;/jackson.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jetty-servlet&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;jackson.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;jackson.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<p>其中，</p>
+<ul>
+<li><code>spring-webmvc</code> 是为了使用 Spring MVC 的功能。</li>
+<li><code>jetty-servlet</code>是为了提供内嵌的 Servlet 容器，这样我们就无需依赖外部的容器，可以直接运行我们的应用。</li>
+<li><code>jackson-core</code> 和 <code>jackson-databind</code> 为我们的应用提供 JSON 序列化的功能。</li>
+</ul>
+<h2 id="后台编码实现"><a href="#后台编码实现" class="headerlink" title="后台编码实现"></a>后台编码实现</h2><h3 id="领域模型"><a href="#领域模型" class="headerlink" title="领域模型"></a>领域模型</h3><p>创建一个 User 类，代表用户信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String username, Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h3><p>创建 HelloController 用于处理用户的请求。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World! Welcome to visit waylau.com!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello/way"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">helloWay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(<span class="string">"Way Lau"</span>, <span class="number">30</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，映射到“/hello”的方法将会返回“Hello World!” 的字符串；而映射到“/hello/way”则会返回一个包含用户信息的JSON字符串。</p>
+<h2 id="应用配置"><a href="#应用配置" class="headerlink" title="应用配置"></a>应用配置</h2><p>在本应用中，我们采用基于 Java  注解的配置。</p>
+<p>AppConfiguration 是我们的主应用配置：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = &#123; <span class="string">"com.waylau.spring"</span> &#125;)  </span><br><span class="line"><span class="meta">@Import</span>(&#123; MvcConfiguration.class &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>AppConfiguration 会扫描“com.waylau.spring”包下的文件，并自动将相关的 bean 进行注册。</p>
+<p>AppConfiguration 同时又引入了 MVC 的配置类 MvcConfiguration：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MvcConfiguration</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">extendMessageConverters</span><span class="params">(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</span> </span>&#123;</span><br><span class="line">        converters.add(<span class="keyword">new</span> MappingJackson2HttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MvcConfiguration 配置类一方面启用了 MVC 的功能，另一方面添加了 Jackson JSON 的转换器。</p>
+<p>最后，我们需要引入 Jetty 服务器 JettyServer：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.eclipse.jetty.server.Server;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.jetty.servlet.ServletContextHandler;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.jetty.servlet.ServletHolder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.context.ContextLoaderListener;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.context.WebApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.context.support.AnnotationConfigWebApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.DispatcherServlet;</span><br><span class="line"><span class="keyword">import</span> com.waylau.spring.mvc.configuration.AppConfiguration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JettyServer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_PORT = <span class="number">8080</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String CONTEXT_PATH = <span class="string">"/"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MAPPING_URL = <span class="string">"/*"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Server server = <span class="keyword">new</span> Server(DEFAULT_PORT);</span><br><span class="line">        server.setHandler(servletContextHandler(webApplicationContext()));</span><br><span class="line">        server.start();</span><br><span class="line">        server.join();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ServletContextHandler <span class="title">servletContextHandler</span><span class="params">(WebApplicationContext context)</span> </span>&#123;</span><br><span class="line">        ServletContextHandler handler = <span class="keyword">new</span> ServletContextHandler();</span><br><span class="line">        handler.setContextPath(CONTEXT_PATH);</span><br><span class="line">        handler.addServlet(<span class="keyword">new</span> ServletHolder(<span class="keyword">new</span> DispatcherServlet(context)), MAPPING_URL);</span><br><span class="line">        handler.addEventListener(<span class="keyword">new</span> ContextLoaderListener(context));</span><br><span class="line">        <span class="keyword">return</span> handler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> WebApplicationContext <span class="title">webApplicationContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AnnotationConfigWebApplicationContext context = <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        context.register(AppConfiguration.class);</span><br><span class="line">        <span class="keyword">return</span> context;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JettyServer 将会在 Application 类中进行启动：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> JettyServer().run();;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="11-13-6-运行"><a href="#11-13-6-运行" class="headerlink" title="11.13.6 运行"></a><a name="t6"></a>11.13.6 运行</h2><p>在编辑器中，直接运行 Application 类即可。启动之后，应能看到如下控制台信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52.665</span>:INFO::main: Logging initialized @<span class="number">203</span>ms to org.eclipse.jetty.util.log.StdErrLog</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52.868</span>:INFO:oejs.Server:main: jetty-<span class="number">9.4</span>.9.v20180320; built: <span class="number">2018</span>-<span class="number">03</span>-<span class="number">20</span>T20:<span class="number">21</span>:<span class="number">10</span>+<span class="number">08</span>:<span class="number">00</span>; git: <span class="number">1f</span>8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm <span class="number">1.8</span>.0_112-b15</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52.902</span>:INFO:oejshC.ROOT:main: Initializing Spring root WebApplicationContext</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">52</span> 下午 org.springframework.web.context.ContextLoader initWebApplicationContext</span><br><span class="line">信息: Root WebApplicationContext: initialization started</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">52</span> 下午 org.springframework.context.support.AbstractApplicationContext prepareRefresh</span><br><span class="line">信息: Refreshing Root WebApplicationContext: startup date [Wed Mar <span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52</span> CST <span class="number">2018</span>]; root of context hierarchy</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">52</span> 下午 org.springframework.web.context.support.AnnotationConfigWebApplicationContext loadBeanDefinitions</span><br><span class="line">信息: Registering annotated classes: [class com.waylau.spring.mvc.configuration.AppConfiguration]</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry register</span><br><span class="line">信息: Mapped <span class="string">"&#123;[/hello]&#125;"</span> onto <span class="keyword">public</span> java.lang.String com.waylau.spring.mvc.controller.HelloController.hello()</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry register</span><br><span class="line">信息: Mapped <span class="string">"&#123;[/hello/way]&#125;"</span> onto <span class="keyword">public</span> com.waylau.spring.mvc.vo.User com.waylau.spring.mvc.controller.HelloController.helloWay()</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter initControllerAdviceCache</span><br><span class="line">信息: Looking <span class="keyword">for</span> <span class="meta">@ControllerAdvice</span>: Root WebApplicationContext: startup date [Wed Mar <span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52</span> CST <span class="number">2018</span>]; root of context hierarchy</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.context.ContextLoader initWebApplicationContext</span><br><span class="line">信息: Root WebApplicationContext: initialization completed in <span class="number">983</span> ms</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">53.893</span>:INFO:oejshC.ROOT:main: Initializing Spring FrameworkServlet <span class="string">'org.springframework.web.servlet.DispatcherServlet-6aaa5eb0'</span></span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.FrameworkServlet initServletBean</span><br><span class="line">信息: FrameworkServlet <span class="string">'org.springframework.web.servlet.DispatcherServlet-6aaa5eb0'</span>: initialization started</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.FrameworkServlet initServletBean</span><br><span class="line">信息: FrameworkServlet <span class="string">'org.springframework.web.servlet.DispatcherServlet-6aaa5eb0'</span>: initialization completed in <span class="number">15</span> ms</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">53.910</span>:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@<span class="number">2796</span>aeae&#123;/,<span class="keyword">null</span>,AVAILABLE&#125;</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">54.037</span>:INFO:oejs.AbstractConnector:main: Started ServerConnector@<span class="number">42054532</span>&#123;HTTP/<span class="number">1.1</span>,[http/<span class="number">1.1</span>]&#125;&#123;<span class="number">0.0</span>.0.0:<span class="number">8080</span>&#125;</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">54.038</span>:INFO:oejs.Server:main: Started @<span class="number">1578</span>ms</span><br></pre></td></tr></table></figure>
+<p>分别在浏览器中访问 “<a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a>” 和 “<a href="http://localhost:8080/hello/way" target="_blank" rel="noopener">http://localhost:8080/hello/way</a>” 地址进行测试，能看到图1和图2的响应效果。</p>
+<p><img src="/https://yapengwen.github.io/img/20180327-mvc-rest-hello.jpg" alt="图1 “/hello”接口的返回内容"></p>
+<p><img src="/https://yapengwen.github.io/img/20180327-mvc-rest-json.jpg" alt="图2 “/hello/way”接口的返回内容"></p>
+<h2 id="参考应用"><a href="#参考应用" class="headerlink" title="参考应用"></a>参考应用</h2><ul>
+<li>源码:见《Spring 5 案例大全》（<a href="https://github.com/waylau/spring-5-book" target="_blank" rel="noopener">https://github.com/waylau/spring-5-book</a>）的 “s5-ch11-mvc-rest”应用。</li>
+<li>原文同步至：<a href="https://waylau.com/spring-mvc-use-jetty/" target="_blank" rel="noopener">https://waylau.com/spring-mvc-use-jetty/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/10/17/jetty_springMVC/" data-id="cjnctqgkp0033wknz3vgvvmey" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jetty/">jetty</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/17/spring-boot_条件加载/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          springboot根据不同的条件创建bean
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/16/用Visio画UML顺序图/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用Visio画UML顺序图</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-mvc/">spring mvc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/加解密/">加解密</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/流程图/">流程图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AES/">AES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DRUID/">DRUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EGIT/">EGIT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arithmetic/">arithmetic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jetty/">jetty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AES/" style="font-size: 10px;">AES</a> <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/DRUID/" style="font-size: 10px;">DRUID</a> <a href="/tags/EGIT/" style="font-size: 10px;">EGIT</a> <a href="/tags/GitHub/" style="font-size: 20px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/RabbitMQ/" style="font-size: 15px;">RabbitMQ</a> <a href="/tags/RocketMQ/" style="font-size: 10px;">RocketMQ</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jetty/" style="font-size: 10px;">jetty</a> <a href="/tags/jprofiler/" style="font-size: 10px;">jprofiler</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/17/java设计模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 yapengWen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

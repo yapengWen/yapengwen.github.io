@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>对称加密与非对称加密 | Calm sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="（一）对称加密（Symmetric Cryptography）对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。 对称加密通常使用的是相对较小的密钥，一般小于256 bit。因为密钥越大，加密越强，但加密与解密的过程越慢。如果你只用">
+<meta name="keywords" content="RSA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对称加密与非对称加密">
+<meta property="og:url" content="https://yapengwen.github.io/2017/12/05/对称加密与非对称加密/index.html">
+<meta property="og:site_name" content="Calm sea">
+<meta property="og:description" content="（一）对称加密（Symmetric Cryptography）对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。 对称加密通常使用的是相对较小的密钥，一般小于256 bit。因为密钥越大，加密越强，但加密与解密的过程越慢。如果你只用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://images.cnitblog.com/blog/442200/201410/121924258581724.png">
+<meta property="og:updated_time" content="2018-10-17T05:48:51.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对称加密与非对称加密">
+<meta name="twitter:description" content="（一）对称加密（Symmetric Cryptography）对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。 对称加密通常使用的是相对较小的密钥，一般小于256 bit。因为密钥越大，加密越强，但加密与解密的过程越慢。如果你只用">
+<meta name="twitter:image" content="http://images.cnitblog.com/blog/442200/201410/121924258581724.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Calm sea" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Calm sea</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Whatever is worth doing is worth doing well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yapengwen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-对称加密与非对称加密" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/05/对称加密与非对称加密/" class="article-date">
+  <time datetime="2017-12-05T03:37:00.000Z" itemprop="datePublished">2017-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/加解密/">加解密</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      对称加密与非对称加密
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="（一）对称加密（Symmetric-Cryptography）"><a href="#（一）对称加密（Symmetric-Cryptography）" class="headerlink" title="（一）对称加密（Symmetric Cryptography）"></a>（一）对称加密（Symmetric Cryptography）</h2><p>对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。</p>
+<p>对称加密通常使用的是相对较小的密钥，一般小于256 bit。因为密钥越大，加密越强，但加密与解密的过程越慢。如果你只用1 bit来做这个密钥，那黑客们可以先试着用0来解密，不行的话就再用1解；但如果你的密钥有1 MB大，黑客们可能永远也无法破解，但加密和解密的过程要花费很长的时间。密钥的大小既要照顾到安全性，也要照顾到效率，是一个trade-off。</p>
+<p>2000年10月2日，美国国家标准与技术研究所（NIST–<em>American National Institute of Standards and Technology</em>）选择了Rijndael算法作为新的高级加密标准（AES–<em>Advanced</em> <em>Encryption</em> <em>Standard）。</em>.NET中包含了Rijndael算法，类名叫RijndaelManaged，下面举个例子。</p>
+<p>加密过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> string myData = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">private</span> string myPassword = <span class="string">"OpenSesame"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">byte</span>[] cipherText;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">byte</span>[] salt = &#123; <span class="number">0x0</span>, <span class="number">0x1</span>, <span class="number">0x2</span>, <span class="number">0x3</span>, <span class="number">0x4</span>, <span class="number">0x5</span>, <span class="number">0x6</span>, <span class="number">0x5</span>, <span class="number">0x4</span>, <span class="number">0x3</span>, <span class="number">0x2</span>, <span class="number">0x1</span>, <span class="number">0x0</span> &#125;;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mnuSymmetricEncryption_Click</span><span class="params">(object sender, RoutedEventArgs e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> key = <span class="keyword">new</span> Rfc2898DeriveBytes(myPassword, salt);</span><br><span class="line">    <span class="comment">// Encrypt the data.</span></span><br><span class="line">    <span class="keyword">var</span> algorithm = <span class="keyword">new</span> RijndaelManaged();</span><br><span class="line">    algorithm.Key = key.GetBytes(<span class="number">16</span>);</span><br><span class="line">    algorithm.IV = key.GetBytes(<span class="number">16</span>);</span><br><span class="line">    <span class="keyword">var</span> sourceBytes = <span class="keyword">new</span> System.Text.UnicodeEncoding().GetBytes(myData);</span><br><span class="line">    using (<span class="keyword">var</span> sourceStream = <span class="keyword">new</span> MemoryStream(sourceBytes))</span><br><span class="line">    using (<span class="keyword">var</span> destinationStream = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">    using (<span class="keyword">var</span> crypto = <span class="keyword">new</span> CryptoStream(sourceStream, algorithm.CreateEncryptor(), CryptoStreamMode.Read))</span><br><span class="line">    &#123;</span><br><span class="line">        moveBytes(crypto, destinationStream);</span><br><span class="line">        cipherText = destinationStream.ToArray();</span><br><span class="line">    &#125;</span><br><span class="line">    MessageBox.Show(String.Format(<span class="string">"Data:&#123;0&#125;&#123;1&#125;Encrypted and Encoded:&#123;2&#125;"</span>, myData, Environment.NewLine, Convert.ToBase64String(cipherText)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">moveBytes</span><span class="params">(Stream source, Stream dest)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2048</span>];</span><br><span class="line">    <span class="keyword">var</span> count = source.Read(bytes, <span class="number">0</span>, bytes.Length);</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">0</span> != count)</span><br><span class="line">    &#123;</span><br><span class="line">        dest.Write(bytes, <span class="number">0</span>, count);</span><br><span class="line">        count = source.Read(bytes, <span class="number">0</span>, bytes.Length);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解密过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mnuSymmetricDecryption_Click</span><span class="params">(object sender, RoutedEventArgs e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cipherText == <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(<span class="string">"Encrypt Data First!"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> key = <span class="keyword">new</span> Rfc2898DeriveBytes(myPassword, salt);</span><br><span class="line">    <span class="comment">// Try to decrypt, thus showing it can be round-tripped.</span></span><br><span class="line">    <span class="keyword">var</span> algorithm = <span class="keyword">new</span> RijndaelManaged();</span><br><span class="line">    algorithm.Key = key.GetBytes(<span class="number">16</span>);</span><br><span class="line">    algorithm.IV = key.GetBytes(<span class="number">16</span>);</span><br><span class="line">    using (<span class="keyword">var</span> sourceStream = <span class="keyword">new</span> MemoryStream(cipherText))</span><br><span class="line">    using (<span class="keyword">var</span> destinationStream = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">    using (<span class="keyword">var</span> crypto = <span class="keyword">new</span> CryptoStream(sourceStream, algorithm.CreateDecryptor(), CryptoStreamMode.Read))</span><br><span class="line">    &#123;</span><br><span class="line">        moveBytes(crypto, destinationStream);</span><br><span class="line">        <span class="keyword">var</span> decryptedBytes = destinationStream.ToArray();</span><br><span class="line">        <span class="keyword">var</span> decryptedMessage = <span class="keyword">new</span> UnicodeEncoding().GetString(</span><br><span class="line">        decryptedBytes);</span><br><span class="line">        MessageBox.Show(decryptedMessage);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对称加密的一大缺点是密钥的管理与分配，换句话说，如何把密钥发送到需要解密你的消息的人的手里是一个问题。在发送密钥的过程中，密钥有很大的风险会被黑客们拦截。现实中通常的做法是将对称加密的密钥进行非对称加密，然后传送给需要它的人。</p>
+<h2 id="（二）非对称加密（Asymmetric-Cryptography）"><a href="#（二）非对称加密（Asymmetric-Cryptography）" class="headerlink" title="（二）非对称加密（Asymmetric Cryptography）"></a>（二）非对称加密（Asymmetric Cryptography）</h2><p>非对称加密为数据的加密与解密提供了一个非常安全的方法，它使用了一对密钥，公钥（public key）和私钥（private key）。私钥只能由一方安全保管，不能外泄，而公钥则可以发给任何请求它的人。非对称加密使用这对密钥中的一个进行加密，而解密则需要另一个密钥。比如，你向银行请求公钥，银行将公钥发给你，你使用公钥对消息加密，那么只有私钥的持有人–银行才能对你的消息解密。与对称加密不同的是，银行不需要将私钥通过网络发送出去，因此安全性大大提高。</p>
+<p>目前最常用的非对称加密算法是RSA算法，是Rivest, Shamir, 和Adleman于1978年发明，他们那时都是在MIT。.NET中也有RSA算法，请看下面的例子：</p>
+<p>加密过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">byte</span>[] rsaCipherText;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mnuAsymmetricEncryption_Click</span><span class="params">(object sender, RoutedEventArgs e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rsa = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// Encrypt the data.</span></span><br><span class="line">    <span class="keyword">var</span> cspParms = <span class="keyword">new</span> CspParameters(rsa);</span><br><span class="line">    cspParms.Flags = CspProviderFlags.UseMachineKeyStore;</span><br><span class="line">    cspParms.KeyContainerName = <span class="string">"My Keys"</span>;</span><br><span class="line">    <span class="keyword">var</span> algorithm = <span class="keyword">new</span> RSACryptoServiceProvider(cspParms);</span><br><span class="line">    <span class="keyword">var</span> sourceBytes = <span class="keyword">new</span> UnicodeEncoding().GetBytes(myData);</span><br><span class="line">    rsaCipherText = algorithm.Encrypt(sourceBytes, <span class="keyword">true</span>);</span><br><span class="line">    MessageBox.Show(String.Format(<span class="string">"Data: &#123;0&#125;&#123;1&#125;Encrypted and Encoded: &#123;2&#125;"</span>,</span><br><span class="line">        myData, Environment.NewLine,</span><br><span class="line">        Convert.ToBase64String(rsaCipherText)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解密过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mnuAsymmetricDecryption_Click</span><span class="params">(object sender, RoutedEventArgs e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(rsaCipherText==<span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(<span class="string">"Encrypt First!"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> rsa = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// decrypt the data.</span></span><br><span class="line">    <span class="keyword">var</span> cspParms = <span class="keyword">new</span> CspParameters(rsa);</span><br><span class="line">    cspParms.Flags = CspProviderFlags.UseMachineKeyStore;</span><br><span class="line">    cspParms.KeyContainerName = <span class="string">"My Keys"</span>;</span><br><span class="line">    <span class="keyword">var</span> algorithm = <span class="keyword">new</span> RSACryptoServiceProvider(cspParms);</span><br><span class="line">    <span class="keyword">var</span> unencrypted = algorithm.Decrypt(rsaCipherText, <span class="keyword">true</span>);</span><br><span class="line">    MessageBox.Show(<span class="keyword">new</span> UnicodeEncoding().GetString(unencrypted));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然非对称加密很安全，但是和对称加密比起来，它非常的慢，所以我们还是要用对称加密来传送消息，但对称加密所使用的密钥我们可以通过非对称加密的方式发送出去。为了解释这个过程，请看下面的例子：</p>
+<p>（1） Alice需要在银行的网站做一笔交易，她的浏览器首先生成了一个随机数作为对称密钥。</p>
+<p>（2） Alice的浏览器向银行的网站请求公钥。</p>
+<p>（3） 银行将公钥发送给Alice。</p>
+<p>（4） Alice的浏览器使用银行的公钥将自己的对称密钥加密。</p>
+<p>（5） Alice的浏览器将加密后的对称密钥发送给银行。</p>
+<p>（6） 银行使用私钥解密得到Alice浏览器的对称密钥。</p>
+<p>（7） Alice与银行可以使用对称密钥来对沟通的内容进行加密与解密了。</p>
+<p><a href="http://images.cnitblog.com/blog/442200/201410/121924251089094.png" target="_blank" rel="noopener"><img src="http://images.cnitblog.com/blog/442200/201410/121924258581724.png" alt="image_thumb3" title="image_thumb3"></a></p>
+<h2 id="（三）总结"><a href="#（三）总结" class="headerlink" title="（三）总结"></a>（三）总结</h2><p>（1） 对称加密加密与解密使用的是同样的密钥，所以速度快，但由于需要将密钥在网络传输，所以安全性不高。</p>
+<p>（2） 非对称加密使用了一对密钥，公钥与私钥，所以安全性高，但加密与解密速度慢。</p>
+<p>（3） 解决的办法是将对称加密的密钥使用非对称加密的公钥进行加密，然后发送出去，接收方使用私钥进行解密得到对称加密的密钥，然后双方可以使用对称加密来进行沟通。</p>
+<p>原创地址：<a href="http://www.cnblogs.com/jfzhu/p/4020928.html" target="_blank" rel="noopener">http://www.cnblogs.com/jfzhu/p/4020928.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/05/对称加密与非对称加密/" data-id="cjnctqgkr0034wknz5by4tv0q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSA/">RSA</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/05/aes-rsa加密机制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AES-RSA加密机制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/05/jprofiler_remote_linux/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jprofiler_监控远程linux服务器的JVM进程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-mvc/">spring mvc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/加解密/">加解密</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/流程图/">流程图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AES/">AES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DRUID/">DRUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EGIT/">EGIT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arithmetic/">arithmetic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jetty/">jetty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AES/" style="font-size: 10px;">AES</a> <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/DRUID/" style="font-size: 10px;">DRUID</a> <a href="/tags/EGIT/" style="font-size: 10px;">EGIT</a> <a href="/tags/GitHub/" style="font-size: 20px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/RabbitMQ/" style="font-size: 15px;">RabbitMQ</a> <a href="/tags/RocketMQ/" style="font-size: 10px;">RocketMQ</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jetty/" style="font-size: 10px;">jetty</a> <a href="/tags/jprofiler/" style="font-size: 10px;">jprofiler</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/17/java设计模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 yapengWen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

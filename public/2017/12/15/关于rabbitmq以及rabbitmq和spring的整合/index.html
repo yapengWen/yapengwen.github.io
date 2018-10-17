@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于RabbitMQ以及RabbitMQ和Spring的整合 | Calm sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、maven依赖123456&amp;lt;!--rabbitmq依赖 --&amp;gt;          &amp;lt;dependency&amp;gt;              &amp;lt;groupId&amp;gt;org.springframework.amqp&amp;lt;/groupId&amp;gt;              &amp;lt;artifactId&amp;gt;spring-rabbit&amp;lt;/artifactId&amp;gt;">
+<meta name="keywords" content="spring,RabbitMQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于RabbitMQ以及RabbitMQ和Spring的整合">
+<meta property="og:url" content="https://yapengwen.github.io/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/index.html">
+<meta property="og:site_name" content="Calm sea">
+<meta property="og:description" content="一、maven依赖123456&amp;lt;!--rabbitmq依赖 --&amp;gt;          &amp;lt;dependency&amp;gt;              &amp;lt;groupId&amp;gt;org.springframework.amqp&amp;lt;/groupId&amp;gt;              &amp;lt;artifactId&amp;gt;spring-rabbit&amp;lt;/artifactId&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-17T05:48:51.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于RabbitMQ以及RabbitMQ和Spring的整合">
+<meta name="twitter:description" content="一、maven依赖123456&amp;lt;!--rabbitmq依赖 --&amp;gt;          &amp;lt;dependency&amp;gt;              &amp;lt;groupId&amp;gt;org.springframework.amqp&amp;lt;/groupId&amp;gt;              &amp;lt;artifactId&amp;gt;spring-rabbit&amp;lt;/artifactId&amp;gt;">
+  
+    <link rel="alternate" href="/atom.xml" title="Calm sea" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Calm sea</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Whatever is worth doing is worth doing well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yapengwen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-关于rabbitmq以及rabbitmq和spring的整合" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/" class="article-date">
+  <time datetime="2017-12-15T09:00:00.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MQ/">MQ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于RabbitMQ以及RabbitMQ和Spring的整合
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="一、maven依赖"><a href="#一、maven依赖" class="headerlink" title="一、maven依赖"></a>一、maven依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--rabbitmq依赖 --&gt;  </span><br><span class="line">        &lt;dependency&gt;  </span><br><span class="line">            &lt;groupId&gt;org.springframework.amqp&lt;/groupId&gt;  </span><br><span class="line">            &lt;artifactId&gt;spring-rabbit&lt;/artifactId&gt;  </span><br><span class="line">            &lt;version&gt;1.3.5.RELEASE&lt;/version&gt;  </span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="二、消费端spring-rabbitmq-xml"><a href="#二、消费端spring-rabbitmq-xml" class="headerlink" title="二、消费端spring-rabbitmq.xml"></a>二、消费端spring-rabbitmq.xml</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">	xmlns:dubbo=&quot;http://code.alibabatech.com/schema/dubbo&quot; xmlns:rabbit=&quot;http://www.springframework.org/schema/rabbit&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;</span><br><span class="line">        http://www.springframework.org/schema/beans </span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">    http://www.springframework.org/schema/context/spring-context-4.0.xsd</span><br><span class="line">    http://www.springframework.org/schema/rabbit  </span><br><span class="line">    http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--配置connection-factory，指定连接rabbit server参数 --&gt;</span><br><span class="line">	&lt;rabbit:connection-factory id=&quot;connectionFactory&quot;</span><br><span class="line">		virtual-host=&quot;$&#123;rabbitmq.virtualhost&#125;&quot; username=&quot;$&#123;rabbitmq.username&#125;&quot;</span><br><span class="line">		password=&quot;$&#123;rabbitmq.password&#125;&quot; host=&quot;$&#123;rabbitmq.host&#125;&quot; port=&quot;$&#123;rabbitmq.port&#125;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 --&gt;</span><br><span class="line">	&lt;rabbit:admin id=&quot;connectAdmin&quot; connection-factory=&quot;connectionFactory&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--定义queue --&gt;</span><br><span class="line">	&lt;rabbit:queue name=&quot;$&#123;rabbitmq.queue&#125;&quot; durable=&quot;true&quot; auto-delete=&quot;false&quot;</span><br><span class="line">		exclusive=&quot;false&quot; declared-by=&quot;connectAdmin&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 定义direct exchange，绑定queueTest --&gt;</span><br><span class="line">	&lt;!-- &lt;rabbit:direct-exchange name=&quot;$&#123;rabbitmq.direct.exchange&#125;&quot;</span><br><span class="line">		durable=&quot;true&quot; auto-delete=&quot;false&quot; declared-by=&quot;connectAdmin&quot;&gt;</span><br><span class="line">		&lt;rabbit:bindings&gt;</span><br><span class="line">			&lt;rabbit:binding queue=&quot;$&#123;rabbitmq.queue&#125;&quot; key=&quot;$&#123;rabbitmq.queue.queueKey&#125;&quot;&gt;&lt;/rabbit:binding&gt;</span><br><span class="line">		&lt;/rabbit:bindings&gt;</span><br><span class="line">	&lt;/rabbit:direct-exchange&gt; --&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--定义rabbit template用于数据的接收和发送 --&gt;</span><br><span class="line">	&lt;!-- &lt;rabbit:template id=&quot;amqpTemplate&quot; connection-factory=&quot;connectionFactory&quot;</span><br><span class="line">		exchange=&quot;$&#123;rabbitmq.direct.exchange&#125;&quot; /&gt; --&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 消息接收者 --&gt;</span><br><span class="line">	&lt;bean id=&quot;messageReceiver&quot;</span><br><span class="line">		class=&quot;com.showshine.pullq.rabbitmq.OfflineRabbitMessageListener&quot;&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- queue litener 观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象 --&gt;</span><br><span class="line">	&lt;rabbit:listener-container</span><br><span class="line">		connection-factory=&quot;connectionFactory&quot;&gt;</span><br><span class="line">		&lt;rabbit:listener queues=&quot;$&#123;rabbitmq.queue&#125;&quot; ref=&quot;messageReceiver&quot; /&gt;</span><br><span class="line">	&lt;/rabbit:listener-container&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="三、生产spring-rabbitmq-xml"><a href="#三、生产spring-rabbitmq-xml" class="headerlink" title="三、生产spring-rabbitmq.xml"></a>三、生产spring-rabbitmq.xml</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">	xmlns:rabbit=&quot;http://www.springframework.org/schema/rabbit&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;</span><br><span class="line">        http://www.springframework.org/schema/beans </span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">    http://www.springframework.org/schema/context/spring-context-4.0.xsd</span><br><span class="line">    http://www.springframework.org/schema/rabbit  </span><br><span class="line">    http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--配置connection-factory，指定连接rabbit server参数 --&gt;</span><br><span class="line">    &lt;rabbit:connection-factory id=&quot;connectionFactory&quot; virtual-host=&quot;virtualTest&quot; </span><br><span class="line">        username=&quot;user&quot; password=&quot;user&quot; host=&quot;192.168.12.210&quot; port=&quot;5672&quot; </span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 --&gt;</span><br><span class="line">    &lt;rabbit:admin id=&quot;connectAdmin&quot; connection-factory=&quot;connectionFactory&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 定义direct exchange，绑定queueTest --&gt;</span><br><span class="line">    &lt;rabbit:direct-exchange name=&quot;rabbitmqexch&quot;</span><br><span class="line">        durable=&quot;true&quot; auto-delete=&quot;false&quot; declared-by=&quot;connectAdmin&quot;&gt;</span><br><span class="line">    &lt;/rabbit:direct-exchange&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--定义rabbit template用于数据的接收和发送 --&gt;</span><br><span class="line">    &lt;rabbit:template id=&quot;amqpTemplate&quot; connection-factory=&quot;connectionFactory&quot;</span><br><span class="line">        exchange=&quot;rabbitmqexch&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="四、rabbitmq-properties"><a href="#四、rabbitmq-properties" class="headerlink" title="四、rabbitmq.properties"></a>四、rabbitmq.properties</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq.virtualhost=virtualTest</span><br><span class="line">rabbitmq.username=user</span><br><span class="line">rabbitmq.password=user</span><br><span class="line">rabbitmq.host=127.0.0.1</span><br><span class="line">rabbitmq.port=5672</span><br><span class="line">rabbitmq.queue=rabbitque</span><br><span class="line">rabbitmq.queue.queueKey=queueTestKey</span><br><span class="line">rabbitmq.direct.exchange=rabbitmqexch</span><br></pre></td></tr></table></figure>
+<p>五、接收端RabbitMessageListener监听类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.showshine.pullq.rabbitmq;</span><br><span class="line"></span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line">import org.springframework.amqp.core.Message;</span><br><span class="line">import org.springframework.amqp.core.MessageListener;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * &lt;dl&gt;</span><br><span class="line"> * &lt;dt&gt;&lt;b&gt;类功能概要：&lt;/b&gt;&lt;/dt&gt;</span><br><span class="line"> * &lt;dd&gt;信贷业务：rocketmq消费端-线下转线上&lt;/dd&gt;</span><br><span class="line"> * &lt;dd&gt;&lt;/dd&gt;</span><br><span class="line"> * &lt;/dl&gt;</span><br><span class="line"> * </span><br><span class="line"> * @copyright Copyright 2017,(C)The Trustrock Co.Ltd. All right reserved.</span><br><span class="line"> * @since 1.6</span><br><span class="line"> * @version &lt;pre&gt;</span><br><span class="line"> * Version  Date                          Company    Author         Case-Name</span><br><span class="line"> * -------  ------------------------      ---------  -------------  --------------</span><br><span class="line"> * 1.00     2017年12月15日 上午11:54:23     Trustrock  wenyapeng      RocketMessageListener </span><br><span class="line"> * </span><br><span class="line"> * &lt;/pre&gt;</span><br><span class="line"> */</span><br><span class="line">public class OfflineRabbitMessageListener implements MessageListener&#123;</span><br><span class="line">	</span><br><span class="line">	private static Logger logger = Logger.getLogger(OfflineRabbitMessageListener.class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">    public void onMessage(Message message) &#123;</span><br><span class="line">         logger.info(&quot;consumer receive message-------&gt;:&#123;&#125;&quot; + message);  </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="六、发送端"><a href="#六、发送端" class="headerlink" title="六、发送端"></a>六、发送端</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.aliyun.openservices.client;</span><br><span class="line"></span><br><span class="line">import org.junit.Before;</span><br><span class="line">import org.junit.Test;</span><br><span class="line">import org.springframework.amqp.core.AmqpTemplate;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">public class RabbitmqTest &#123;</span><br><span class="line"></span><br><span class="line">	private AmqpTemplate amqpTemplate;</span><br><span class="line"></span><br><span class="line">	private ApplicationContext context = null;</span><br><span class="line"></span><br><span class="line">	@Before</span><br><span class="line">	public void setUp() throws Exception &#123;</span><br><span class="line">		context = new ClassPathXmlApplicationContext(&quot;spring-rabbitmq.xml&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Test</span><br><span class="line">	public void should_send_a_amq_message() throws Exception &#123;</span><br><span class="line">		amqpTemplate = (AmqpTemplate) context.getBean(&quot;amqpTemplate&quot;);</span><br><span class="line">		int a = 2;</span><br><span class="line">		while (a &gt; 0) &#123;</span><br><span class="line">			amqpTemplate.convertAndSend(&quot;queueTestKey&quot;, &quot;wqwqw&quot; + a--);</span><br><span class="line">			try &#123;</span><br><span class="line">				// 暂停一下，好让消息消费者去取消息打印出来</span><br><span class="line">				Thread.sleep(1000);</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/s648667069/p/6401463.html" target="_blank" rel="noopener">参考https://www.cnblogs.com/s648667069/p/6401463.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/" data-id="cjnctqgk00026wknzuqb22iuu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          windows下安装rabbitMQ及操作常用命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/15/spring整合rocketmq/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring整合RocketMQ</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-mvc/">spring mvc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/加解密/">加解密</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/流程图/">流程图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AES/">AES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DRUID/">DRUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EGIT/">EGIT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arithmetic/">arithmetic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jetty/">jetty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AES/" style="font-size: 10px;">AES</a> <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/DRUID/" style="font-size: 10px;">DRUID</a> <a href="/tags/EGIT/" style="font-size: 10px;">EGIT</a> <a href="/tags/GitHub/" style="font-size: 20px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/RabbitMQ/" style="font-size: 15px;">RabbitMQ</a> <a href="/tags/RocketMQ/" style="font-size: 10px;">RocketMQ</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jetty/" style="font-size: 10px;">jetty</a> <a href="/tags/jprofiler/" style="font-size: 10px;">jprofiler</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/17/java设计模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 yapengWen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

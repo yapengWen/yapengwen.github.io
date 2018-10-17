@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>windows下安装rabbitMQ及操作常用命令 | Calm sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="rabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。 1.安装Erlang 所以在安装rabbitMQ之前，需要先安装Erlang 。 小编使用的是otp_win64_18.1 ，需要其他版本或者32位">
+<meta name="keywords" content="RabbitMQ,windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows下安装rabbitMQ及操作常用命令">
+<meta property="og:url" content="https://yapengwen.github.io/2017/12/20/windows下安装rabbitmq及操作常用命令/index.html">
+<meta property="og:site_name" content="Calm sea">
+<meta property="og:description" content="rabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。 1.安装Erlang 所以在安装rabbitMQ之前，需要先安装Erlang 。 小编使用的是otp_win64_18.1 ，需要其他版本或者32位">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160923235447637-1807926011.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924000520059-1488931520.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001111465-1934628397.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001344449-518927811.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001810231-489339837.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924002317996-1750317042.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924002417481-667312419.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003014246-2015422375.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003047621-1862534375.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924005224668-1215172795.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003352168-1350202979.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003722731-332310837.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924004023387-110874920.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924004035121-53385779.png">
+<meta property="og:updated_time" content="2018-10-17T05:48:51.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows下安装rabbitMQ及操作常用命令">
+<meta name="twitter:description" content="rabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。 1.安装Erlang 所以在安装rabbitMQ之前，需要先安装Erlang 。 小编使用的是otp_win64_18.1 ，需要其他版本或者32位">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/784082/201609/784082-20160923235447637-1807926011.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Calm sea" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Calm sea</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Whatever is worth doing is worth doing well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yapengwen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-windows下安装rabbitmq及操作常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/" class="article-date">
+  <time datetime="2017-12-20T01:00:00.000Z" itemprop="datePublished">2017-12-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MQ/">MQ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      windows下安装rabbitMQ及操作常用命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>rabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。</p>
+<h2 id="1-安装Erlang"><a href="#1-安装Erlang" class="headerlink" title="1.安装Erlang "></a>1.安装<span style="font-size: 18.018px; line-height: 31.5315px;">Erlang</span><span style="font-size: 18.018px; line-height: 31.5315px;"> </span></h2><p>所以在安装rabbitMQ之前，需要先安装Erlang 。</p>
+<p>小编使用的是<a href="https://pan.baidu.com/s/1c2826rA" target="_blank" rel="noopener">otp_win64_18.1</a> ，需要其他版本或者32位系统的，可以去<a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">官网</a>下载。</p>
+<p>全部点击“下一步”就行。</p>
+<p>有的选择其他的安装方式，可能需要添加一下系统环境变量（正常安装的也要检查下）：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160923235447637-1807926011.png" alt=""></p>
+<p>有最好，没有的话就手动添加嘛。</p>
+<h2 id="2-安装RabbitMQ"><a href="#2-安装RabbitMQ" class="headerlink" title="2.安装RabbitMQ"></a>2.安装<span style="color: #333333; font-family: 'Microsoft YaHei'; line-height: 24px;">RabbitMQ</span></h2><p>下载运行<a href="https://pan.baidu.com/s/1cqpG0u" target="_blank" rel="noopener">rabbitmq-server-3.6.5</a> ，需要其他版本或者32位系统的，可以去<a href="http://www.rabbitmq.com/download.html" target="_blank" rel="noopener">官网</a>下载。</p>
+<p>依旧可以不改变默认进行安装。</p>
+<p>需要注意：默认安装的RabbitMQ 监听端口是5672</p>
+<h2 id="3-配置"><a href="#3-配置" class="headerlink" title="3.配置"></a>3.配置</h2><h3 id="激活-RabbitMQ’s-Management-Plugin"><a href="#激活-RabbitMQ’s-Management-Plugin" class="headerlink" title="激活 RabbitMQ’s Management Plugin"></a>激活 RabbitMQ’s Management Plugin</h3><p>使用RabbitMQ 管理插件，可以更好的可视化方式查看Rabbit MQ 服务器实例的状态。</p>
+<p>打开命令窗口：</p>
+<p>输入命令：</p>
+<div class="cnblogs_code"><br><br><pre><span style="color: #800000;">“</span><span style="color: #800000;">C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin\rabbitmq-plugins.bat</span><span style="color: #800000;">“</span> enable rabbitmq_management</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924000520059-1488931520.png" alt=""></p>
+<p>这样，就安装好插件了，是不是能使用了呢？别急，需要重启服务才行，使用命令：</p>
+<div class="cnblogs_code"><br><br><pre>net stop RabbitMQ &amp;&amp; net start RabbitMQ</pre><br><br></div>
+
+<p>这时候的，也许会出现这种结果：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001111465-1934628397.png" alt=""></p>
+<p>“发生错误：发生系统错误 <span lang="EN-US">5。<span lang="EN-US">  拒绝访问。”</span></span></p>
+<p>这是什么鬼？查了下，原来，5代表的是：不是系统管理员权限。</p>
+<p>问题解决方案：使用管理员打开<span lang="EN-US">cmd再执行此命令：</span></p>
+<p><span lang="EN-US"><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001344449-518927811.png" alt=""></span></p>
+<p>这样就结束了吗？当然没有。</p>
+<h3 id="创建用户，密码，绑定角色"><a href="#创建用户，密码，绑定角色" class="headerlink" title="创建用户，密码，绑定角色"></a>创建用户，密码，绑定角色</h3><p>使用<span lang="EN-US">rabbitmqctl控制台命令（位于<span lang="EN-US">C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin&gt;）来创建用户，密码，绑定权限等。</span></span></p>
+<p>注意：安装路径不同的请看仔细啊。</p>
+<p>rabbitmq的用户管理包括增加用户，删除用户，查看用户列表，修改用户密码。</p>
+<p>查看已有用户及用户的角色：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat list_users</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001810231-489339837.png" alt=""></p>
+<p>新增一个用户：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat add_user username password</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924002317996-1750317042.png" alt=""></p>
+<p>此时来看下我们当前用户哈：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924002417481-667312419.png" alt=""></p>
+<p>eric 后面没有“[administrator]”</p>
+<p>这个administrator是干嘛用的呢？这就涉及到用户角色问题了：</p>
+<p>按照我个人理解，rabbitmq用户角色可分为五类：超级管理员, 监控者, 策略制定者, 普通管理者以及其他。</p>
+<p>(1) 超级管理员(administrator)</p>
+<p>可登陆管理控制台(启用management plugin的情况下)，可查看所有的信息，并且可以对用户，策略(policy)进行操作。</p>
+<p>(2) 监控者(monitoring)</p>
+<p>可登陆管理控制台(启用management plugin的情况下)，同时可以查看rabbitmq节点的相关信息(进程数，内存使用情况，磁盘使用情况等) </p>
+<p>(3) 策略制定者(policymaker)</p>
+<p>可登陆管理控制台(启用management plugin的情况下), 同时可以对policy进行管理。</p>
+<p>(4) 普通管理者(management)</p>
+<p>仅可登陆管理控制台(启用management plugin的情况下)，无法看到节点信息，也无法对策略进行管理。</p>
+<p>(5) 其他的</p>
+<p>无法登陆管理控制台，通常就是普通的生产者和消费者。</p>
+<p>好啦，我们也给 eric 变成 “超级管理员” 角色：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat set_user_tags username administrator</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003014246-2015422375.png" alt=""></p>
+<p>再看下结果哈：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003047621-1862534375.png" alt=""></p>
+<p>当然，除了上面的administrator 还有 monitoring、policymaker、management、自定义名称 ，对应上面介绍到的不同的角色。</p>
+<p>像我们人一样，我们角色除了是公司的员工，还是父母的孩子、子女的爸妈等，用户也可以同时具有多个角色,设置方式:</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat  set_user_tags  username tag1 tag2 …</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924005224668-1215172795.png" alt=""></p>
+<p>恩，现在总觉得guest 这个不安全（它的默认密码是guest）,想更改密码，好办：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl change_password userName newPassword</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003352168-1350202979.png" alt=""></p>
+<p>有的人也许会说，我就是看guest不爽，老子新增了administrator用户了，就是想干掉它，可以：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat delete_user username</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003722731-332310837.png" alt=""></p>
+<p> 这时，可能有人就要问了：命令框是只有一个用户了，你怎么操作啊？怎么查看执行情况啊/</p>
+<p> 当然有路子啦：</p>
+<p>使用浏览器打开<a href="http://localhost:15672/" target="_blank" rel="noopener"> http://localhost:15672</a><a href="http://localhost:15672%C2%A0/" target="_blank" rel="noopener"> </a>访问Rabbit Mq的管理控制台，使用刚才创建的账号登陆系统：</p>
+<p> <img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924004023387-110874920.png" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924004035121-53385779.png" alt=""></p>
+<p>其实，除了可查看所有的信息 ，上面的命令 增删改查、权限设置，都可以在这个页面完成，还可以依据业务需求设置策略(policy)，具体的就不在这里啰嗦了，大家可以看看网上的帖子。</p>
+<h3 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a><span style="font-size: 14px; line-height: 1.5;">权限设置</span></h3><p><span style="font-size: 14px; line-height: 1.5;">用户有了角色，那也需要权限设置啊，别急，慢慢来：</span></p>
+<p>按照官方文档，用户权限指的是用户对exchange，queue的操作权限，包括配置权限，读写权限。</p>
+<p>我们配置权限会影响到exchange、queue的声明和删除。</p>
+<p>读写权限影响到从queue里取消息、向exchange发送消息以及queue和exchange的绑定(binding)操作。</p>
+<p>例如： 将queue绑定到某exchange上，需要具有queue的可写权限，以及exchange的可读权限；向exchange发送消息需要具有exchange的可写权限；从queue里取数据需要具有queue的可读权限</p>
+<p>权限相关命令为：</p>
+<p>(1) 设置用户权限</p>
+<p>rabbitmqctl  set_permissions  -p  VHostPath  User  ConfP  WriteP  ReadP</p>
+<p>(2) 查看(指定hostpath)所有用户的权限信息</p>
+<p>rabbitmqctl  list_permissions  [-p  VHostPath]</p>
+<p>(3) 查看指定用户的权限信息</p>
+<p>rabbitmqctl  list_user_permissions  User</p>
+<p>(4)  清除用户的权限信息</p>
+<p>rabbitmqctl  clear_permissions  [-p VHostPath]  User</p>
+<p>现在环境搭好了，用户、角色、权限全部设置好，开始进行code（原理整理，及编码 待续）</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>安装参考 <a href="http://www.rabbitmq.com/install-windows-manual.html" target="_blank" rel="noopener">http://www.rabbitmq.com/install-windows-manual.html</a></p>
+<p>权限内容参考 <a href="http://www.rabbitmq.com/man/rabbitmqctl.1.man.html" target="_blank" rel="noopener">http://www.rabbitmq.com/man/rabbitmqctl.1.man.html</a></p>
+<p>权限命令摘自 <a href="https://my.oschina.net/hncscwc/blog/262246" target="_blank" rel="noopener">https://my.oschina.net/hncscwc/blog/262246</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/20/windows下安装rabbitmq及操作常用命令/" data-id="cjnctqgku0036wknzj3hyctp3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/17/druid_解密数据库密码/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          配置Druid解密数据库密码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于RabbitMQ以及RabbitMQ和Spring的整合</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-mvc/">spring mvc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/加解密/">加解密</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/流程图/">流程图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AES/">AES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DRUID/">DRUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EGIT/">EGIT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arithmetic/">arithmetic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jetty/">jetty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AES/" style="font-size: 10px;">AES</a> <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/DRUID/" style="font-size: 10px;">DRUID</a> <a href="/tags/EGIT/" style="font-size: 10px;">EGIT</a> <a href="/tags/GitHub/" style="font-size: 20px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/RabbitMQ/" style="font-size: 15px;">RabbitMQ</a> <a href="/tags/RocketMQ/" style="font-size: 10px;">RocketMQ</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jetty/" style="font-size: 10px;">jetty</a> <a href="/tags/jprofiler/" style="font-size: 10px;">jprofiler</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/17/java设计模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 yapengWen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

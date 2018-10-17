@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>GitHub 实现多人协同提交代码并且权限分组管理 | Calm sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言： 在上一篇文章中Android github 快速实现多人协作(http://www.cnblogs.com/zhaoyanjun/p/5829142.html)介绍了如何快速的实现多人协作的功能。 其优点是：操作简单，快速上手。缺点是：没有办法实现权限控制。为啥要权限控制？这是一个蛋疼的问题，因为我们为了项目的安全考虑，需要对一部分人开放只读权限(只能 read、clone) ; 或者对一">
+<meta name="keywords" content="GitHub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub 实现多人协同提交代码并且权限分组管理">
+<meta property="og:url" content="https://yapengwen.github.io/2017/07/17/git-github 实现多人协同提交代码并且权限分组管理/index.html">
+<meta property="og:site_name" content="Calm sea">
+<meta property="og:description" content="前言： 在上一篇文章中Android github 快速实现多人协作(http://www.cnblogs.com/zhaoyanjun/p/5829142.html)介绍了如何快速的实现多人协作的功能。 其优点是：操作简单，快速上手。缺点是：没有办法实现权限控制。为啥要权限控制？这是一个蛋疼的问题，因为我们为了项目的安全考虑，需要对一部分人开放只读权限(只能 read、clone) ; 或者对一">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919134451262-1641512058.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919135811152-676430683.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919135831887-796744077.gif">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919140654590-1651498572.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919141042527-1718710011.gif">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919141552606-1805098616.gif">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919143047918-225222184.gif">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919145301793-2066352342.gif">
+<meta property="og:updated_time" content="2018-10-17T05:48:51.096Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GitHub 实现多人协同提交代码并且权限分组管理">
+<meta name="twitter:description" content="前言： 在上一篇文章中Android github 快速实现多人协作(http://www.cnblogs.com/zhaoyanjun/p/5829142.html)介绍了如何快速的实现多人协作的功能。 其优点是：操作简单，快速上手。缺点是：没有办法实现权限控制。为啥要权限控制？这是一个蛋疼的问题，因为我们为了项目的安全考虑，需要对一部分人开放只读权限(只能 read、clone) ; 或者对一">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919134451262-1641512058.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Calm sea" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Calm sea</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Whatever is worth doing is worth doing well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yapengwen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git-github 实现多人协同提交代码并且权限分组管理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/17/git-github 实现多人协同提交代码并且权限分组管理/" class="article-date">
+  <time datetime="2017-07-17T05:00:00.000Z" itemprop="datePublished">2017-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      GitHub 实现多人协同提交代码并且权限分组管理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：</p>
+<p>在上一篇文章中<a href="http://www.cnblogs.com/zhaoyanjun/p/5829142.html" target="_blank" rel="noopener">Android github 快速实现多人协作</a>(<a href="http://www.cnblogs.com/zhaoyanjun/p/5829142.html)介绍了如何快速的实现多人协作的功能。" target="_blank" rel="noopener">http://www.cnblogs.com/zhaoyanjun/p/5829142.html)介绍了如何快速的实现多人协作的功能。</a></p>
+<p>其优点是：操作简单，快速上手。缺点是：没有办法实现权限控制。为啥要权限控制？这是一个蛋疼的问题，因为我们为了项目的安全考虑，需要对一部分人开放只读权限(只能 read、clone) ; 或者对一部分人开放写权限(只能 read、clone、push) ; 或者对一部分人开放管理者权限(只能 read、clone、push、给仓库添加成员 )。事实上github对权限的管理只有4种，前三种权限分别是 Admin(管理者)、Write(只写) 、Read(只读) 。最后一种权限比较特殊，它是该组织的创建者，拥有至高无上的的权利。</p>
+<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><p>要想弄清楚github权限管理，需要了解几个概念。<strong>organization（组织）、repository（仓库）、Team（团队）</strong>。</p>
+<p>在了解这些概念之前，先听我讲一个小故事。话说从前有个生意人，由于他聪明又能干，他开了水果摊、奶茶店、还有一个网吧。转眼10年过去了，他积累了很多钱，也有了很牛逼的权利，总的来说就是有钱有势有人，于是乎有一天他带领100个兄弟成立一个黑帮组织：青帮。组织成立后，他把100个兄弟分成4个team, 每个team 25个人。团队成立后，兄弟们总不能坐着饿死吧，于是乎他有开了一个ktv 、一个超市、一个足浴大保健。那么问题就来了，怎么让4个team接手这3个项目，要有明确的权限控制，如果权限控制不得当，就会出现自家兄弟互相抢地盘的问题。一个项目可以让多个team管理，一个team可以管多个项目，所以team和项目之间是多对多的关系。</p>
+<ul>
+<li>小故事的中的角色资产分析</li>
+</ul>
+<p>生意人所拥有的资产：3个项目：水果摊、奶菜店、网吧。</p>
+<p>1个组织：青帮</p>
+<p>青帮组织所拥有的资产：3个项目：Ktv、超市、足浴大保健</p>
+<p> 4个team</p>
+<p>注意：水果摊、奶菜店、网吧 这三个项目只属于生意人的资产，不归任何组织所拥有。那延伸一下，生意人是可以再次创建一个新的项目，比如一个4s店；同时他也可以再创建一个新的组织，比如一个洪帮组织。同样在洪帮组织里面可以创建多个team。</p>
+<p>现在可以把思路转换到github中，对应关系</p>
+<p>生意人  –&gt;  <strong>你注册的github账户</strong></p>
+<p>水果摊  –&gt; <strong>repository（仓库）</strong></p>
+<p>青帮 –&gt; <strong>organization（</strong>组织<strong>）</strong></p>
+<p>团队–&gt; <strong>**Team（</strong>团队<strong>）**</strong></p>
+<h3 id="1、github实战–创建组织"><a href="#1、github实战–创建组织" class="headerlink" title="1、github实战–创建组织"></a>1、github实战–创建组织</h3><p>在故事中，生意人可以创建项目和组织。对应到github上的用户可以创建仓库和组织。</p>
+<p><img src="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919134451262-1641512058.png" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919135811152-676430683.png" alt=""></p>
+<p>完整的实例</p>
+<p><img src="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919135831887-796744077.gif" alt=""></p>
+<h3 id="2、github实战–在组织中创建仓库"><a href="#2、github实战–在组织中创建仓库" class="headerlink" title="2、github实战–在组织中创建仓库"></a>2、github实战–在组织中创建仓库</h3><p>当创建完组织后，来看看组织的结构</p>
+<p><img src="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919140654590-1651498572.png" alt=""></p>
+<p>在Organ-Name 组织下，创建一个仓库</p>
+<p><img src="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919141042527-1718710011.gif" alt=""></p>
+<h3 id="3、github实战–在组织中创建team"><a href="#3、github实战–在组织中创建team" class="headerlink" title="3、github实战–在组织中创建team"></a>3、github实战–在组织中创建team</h3><p><img src="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919141552606-1805098616.gif" alt=""></p>
+<p>团队创建完成后，默认这个团队的成员只有一个人，就是该账号。下面就开始给这个team添加其他成员。</p>
+<p><img src="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919143047918-225222184.gif" alt=""></p>
+<p>邀请成功以后，需要被邀请人去自己的邮箱点击一下，确认邀请</p>
+<h3 id="4、github实战–在组织中给仓库添加team并且设置权限。"><a href="#4、github实战–在组织中给仓库添加team并且设置权限。" class="headerlink" title="4、github实战–在组织中给仓库添加team并且设置权限。"></a>4、github实战–在组织中给仓库添加team并且设置权限。</h3><p><img src="http://images2015.cnblogs.com/blog/605655/201609/605655-20160919145301793-2066352342.gif" alt=""></p>
+<p> 可以看到，仓库对team的权限控制有三种</p>
+<ul>
+<li>Admin 管理者权限(只能 read、clone、push、给仓库添加成员 )</li>
+<li>Write 写权限(只能 read、clone、push)</li>
+<li>Read 读权限(只能 read、clone)</li>
+</ul>
+<p>另外任意一个Team可以供多个组织使用，到这里权限添加已经全部完成了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>通过这篇文章可以在github愉快的使用权限管理了，但是github不能免费的创建私有仓库，这是一个很严重的问题。如果是开源项目，用github完全没有问题。如果是私有项目，可以有以下几个途径达到要求</p>
+<p>1、在github花钱购买私有仓库。</p>
+<p>2、使用国内比较出名的开源中国git托管服务：<a href="https://git.oschina.net/" title="https://git.oschina.net/" target="_blank" rel="noopener">https://git.oschina.net/</a></p>
+<p>3、使用GitLab,这需要在自己的服务器上部署。传送门：<a href="https://about.gitlab.com/gitlab-com/" title="https://about.gitlab.com/gitlab-com/" target="_blank" rel="noopener">https://about.gitlab.com/gitlab-com/</a></p>
+</li>
+</ul>
+<p>文章转自<a href="http://www.cnblogs.com/zhaoyanjun/p/5882784.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhaoyanjun/p/5882784.html </a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/07/17/git-github 实现多人协同提交代码并且权限分组管理/" data-id="cjnctqgil000dwknzgq1vz0vw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/18/git-git和github 关系/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          git和github 关系
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/17/python-anaconda的使用及配置方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Anaconda的使用及配置方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-mvc/">spring mvc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/加解密/">加解密</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/流程图/">流程图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AES/">AES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DRUID/">DRUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EGIT/">EGIT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arithmetic/">arithmetic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jetty/">jetty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AES/" style="font-size: 10px;">AES</a> <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/DRUID/" style="font-size: 10px;">DRUID</a> <a href="/tags/EGIT/" style="font-size: 10px;">EGIT</a> <a href="/tags/GitHub/" style="font-size: 20px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/RabbitMQ/" style="font-size: 15px;">RabbitMQ</a> <a href="/tags/RocketMQ/" style="font-size: 10px;">RocketMQ</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jetty/" style="font-size: 10px;">jetty</a> <a href="/tags/jprofiler/" style="font-size: 10px;">jprofiler</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/17/java设计模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 yapengWen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

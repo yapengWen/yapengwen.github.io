@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Calm sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Calm sea">
+<meta property="og:url" content="https://yapengwen.github.io/index.html">
+<meta property="og:site_name" content="Calm sea">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calm sea">
+  
+    <link rel="alternate" href="/atom.xml" title="Calm sea" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Calm sea</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Whatever is worth doing is worth doing well.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yapengwen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-java设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/17/java设计模式/" class="article-date">
+  <time datetime="2018-10-17T06:45:57.678Z" itemprop="datePublished">2018-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>设计模式遵循的原则有6个：<br>1、开闭原则（Open Close Principle）</p>
+<p>　　对扩展开放，对修改关闭。</p>
+<p>2、里氏代换原则（Liskov Substitution Principle）</p>
+<p>　　只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。</p>
+<p>3、依赖倒转原则（Dependence Inversion Principle）</p>
+<p>　　这个是开闭原则的基础，对接口编程，依赖于抽象而不依赖于具体。</p>
+<p>4、接口隔离原则（Interface Segregation Principle）</p>
+<p>　　使用多个隔离的借口来降低耦合度。</p>
+<p>5、迪米特法则（最少知道原则）（Demeter Principle）</p>
+<p>　　一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。</p>
+<p>6、合成复用原则（Composite Reuse Principle）</p>
+<p>　　原则是尽量使用合成/聚合的方式，而不是使用继承。继承实际上破坏了类的封装性，超类的方法可能会被子类修改。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2018/10/17/java设计模式/" data-id="cjnctqgjm001rwknzc7kjo82x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-druid_解密数据库密码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/17/druid_解密数据库密码/" class="article-date">
+  <time datetime="2018-10-17T03:37:00.000Z" itemprop="datePublished">2018-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我们得下载一个druid-1.0.16.jar的包</p>
+<p>其次键入命令&nbsp;java -cp druid-1.0.16.jar com.alibaba.druid.filter.config.ConfigTools your_password</p>
+<p>这时候会生成privatekey，publickey，以及password，相关的截图如下</p>
+<p><img src="https://yapengwen.github.io/img/20161123020626355.png" alt=""></p>
+<p>注意1：如果使用的不是druid-1.0.16.jar可能只会生成一个password。</p>
+<p>注意2：如果没配置好，可能会报一大推奇奇怪怪的错误，比如：<strong>org.springframework.beans.factory.BeanCreationException:&nbsp;Error&nbsp;creatingbean&nbsp;with name ‘shiroFilter’:….</strong></p>
+<p>配置Druid解密数据库密码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jdbc.type=mysql</span><br><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql:<span class="comment">//localhost:3306/jesng?useUnicode=true&amp;amp;characterEncoding=utf-8</span></span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=IVpkS/WvZQKLcm4+f7xlLFo5FzxGIj3O1br9TcvLlq2a17mmt0SWe9Qq1hyVKsnbsRdU6FKTItc6vVIF9RRpTw==</span><br><span class="line">jdbc.publickey=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKYBLQ067pCDwEfysD6rAIWZD4C2K7BO09NFYMmA+VD4i+<span class="number">28</span>znGk9F3w3uCFp6vYf633rPJpx+hoHU/+<span class="number">9</span>gBIewUCAwEAAQ==</span><br></pre></td></tr></table></figure>
+<p>配置Druid解密数据库密码的主要新增的两行配置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、</span><br><span class="line">&lt;property name=<span class="string">"connectionProperties"</span></span><br><span class="line">value=<span class="string">"druid.stat.slowSqlMillis=5000;config.decrypt=true;config.decrypt.key=$&#123;jdbc.publickey&#125;"</span>/&gt;</span><br><span class="line"></span><br><span class="line">作用：配置ConfigFilter解密密码  ，注意出的publickey对应</span><br><span class="line"><span class="number">2</span>、&lt;property name=<span class="string">"filters"</span> value=<span class="string">"config"</span> /&gt;  </span><br><span class="line">作用：提示Druid数据源需要对数据库密码进行解密</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2018/10/17/druid_解密数据库密码/" data-id="cjnctqgib0005wknza3ys6pco" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DRUID/">DRUID</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-windows下安装rabbitmq及操作常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/" class="article-date">
+  <time datetime="2017-12-20T01:00:00.000Z" itemprop="datePublished">2017-12-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MQ/">MQ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>rabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。</p>
+<h2 id="1-安装Erlang"><a href="#1-安装Erlang" class="headerlink" title="1.安装Erlang "></a>1.安装<span style="font-size: 18.018px; line-height: 31.5315px;">Erlang</span><span style="font-size: 18.018px; line-height: 31.5315px;"> </span></h2><p>所以在安装rabbitMQ之前，需要先安装Erlang 。</p>
+<p>小编使用的是<a href="https://pan.baidu.com/s/1c2826rA" target="_blank" rel="noopener">otp_win64_18.1</a> ，需要其他版本或者32位系统的，可以去<a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">官网</a>下载。</p>
+<p>全部点击“下一步”就行。</p>
+<p>有的选择其他的安装方式，可能需要添加一下系统环境变量（正常安装的也要检查下）：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160923235447637-1807926011.png" alt=""></p>
+<p>有最好，没有的话就手动添加嘛。</p>
+<h2 id="2-安装RabbitMQ"><a href="#2-安装RabbitMQ" class="headerlink" title="2.安装RabbitMQ"></a>2.安装<span style="color: #333333; font-family: 'Microsoft YaHei'; line-height: 24px;">RabbitMQ</span></h2><p>下载运行<a href="https://pan.baidu.com/s/1cqpG0u" target="_blank" rel="noopener">rabbitmq-server-3.6.5</a> ，需要其他版本或者32位系统的，可以去<a href="http://www.rabbitmq.com/download.html" target="_blank" rel="noopener">官网</a>下载。</p>
+<p>依旧可以不改变默认进行安装。</p>
+<p>需要注意：默认安装的RabbitMQ 监听端口是5672</p>
+<h2 id="3-配置"><a href="#3-配置" class="headerlink" title="3.配置"></a>3.配置</h2><h3 id="激活-RabbitMQ’s-Management-Plugin"><a href="#激活-RabbitMQ’s-Management-Plugin" class="headerlink" title="激活 RabbitMQ’s Management Plugin"></a>激活 RabbitMQ’s Management Plugin</h3><p>使用RabbitMQ 管理插件，可以更好的可视化方式查看Rabbit MQ 服务器实例的状态。</p>
+<p>打开命令窗口：</p>
+<p>输入命令：</p>
+<div class="cnblogs_code"><br><br><pre><span style="color: #800000;">“</span><span style="color: #800000;">C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin\rabbitmq-plugins.bat</span><span style="color: #800000;">“</span> enable rabbitmq_management</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924000520059-1488931520.png" alt=""></p>
+<p>这样，就安装好插件了，是不是能使用了呢？别急，需要重启服务才行，使用命令：</p>
+<div class="cnblogs_code"><br><br><pre>net stop RabbitMQ &amp;&amp; net start RabbitMQ</pre><br><br></div>
+
+<p>这时候的，也许会出现这种结果：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001111465-1934628397.png" alt=""></p>
+<p>“发生错误：发生系统错误 <span lang="EN-US">5。<span lang="EN-US">  拒绝访问。”</span></span></p>
+<p>这是什么鬼？查了下，原来，5代表的是：不是系统管理员权限。</p>
+<p>问题解决方案：使用管理员打开<span lang="EN-US">cmd再执行此命令：</span></p>
+<p><span lang="EN-US"><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001344449-518927811.png" alt=""></span></p>
+<p>这样就结束了吗？当然没有。</p>
+<h3 id="创建用户，密码，绑定角色"><a href="#创建用户，密码，绑定角色" class="headerlink" title="创建用户，密码，绑定角色"></a>创建用户，密码，绑定角色</h3><p>使用<span lang="EN-US">rabbitmqctl控制台命令（位于<span lang="EN-US">C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin&gt;）来创建用户，密码，绑定权限等。</span></span></p>
+<p>注意：安装路径不同的请看仔细啊。</p>
+<p>rabbitmq的用户管理包括增加用户，删除用户，查看用户列表，修改用户密码。</p>
+<p>查看已有用户及用户的角色：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat list_users</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001810231-489339837.png" alt=""></p>
+<p>新增一个用户：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat add_user username password</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924002317996-1750317042.png" alt=""></p>
+<p>此时来看下我们当前用户哈：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924002417481-667312419.png" alt=""></p>
+<p>eric 后面没有“[administrator]”</p>
+<p>这个administrator是干嘛用的呢？这就涉及到用户角色问题了：</p>
+<p>按照我个人理解，rabbitmq用户角色可分为五类：超级管理员, 监控者, 策略制定者, 普通管理者以及其他。</p>
+<p>(1) 超级管理员(administrator)</p>
+<p>可登陆管理控制台(启用management plugin的情况下)，可查看所有的信息，并且可以对用户，策略(policy)进行操作。</p>
+<p>(2) 监控者(monitoring)</p>
+<p>可登陆管理控制台(启用management plugin的情况下)，同时可以查看rabbitmq节点的相关信息(进程数，内存使用情况，磁盘使用情况等) </p>
+<p>(3) 策略制定者(policymaker)</p>
+<p>可登陆管理控制台(启用management plugin的情况下), 同时可以对policy进行管理。</p>
+<p>(4) 普通管理者(management)</p>
+<p>仅可登陆管理控制台(启用management plugin的情况下)，无法看到节点信息，也无法对策略进行管理。</p>
+<p>(5) 其他的</p>
+<p>无法登陆管理控制台，通常就是普通的生产者和消费者。</p>
+<p>好啦，我们也给 eric 变成 “超级管理员” 角色：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat set_user_tags username administrator</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003014246-2015422375.png" alt=""></p>
+<p>再看下结果哈：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003047621-1862534375.png" alt=""></p>
+<p>当然，除了上面的administrator 还有 monitoring、policymaker、management、自定义名称 ，对应上面介绍到的不同的角色。</p>
+<p>像我们人一样，我们角色除了是公司的员工，还是父母的孩子、子女的爸妈等，用户也可以同时具有多个角色,设置方式:</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat  set_user_tags  username tag1 tag2 …</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924005224668-1215172795.png" alt=""></p>
+<p>恩，现在总觉得guest 这个不安全（它的默认密码是guest）,想更改密码，好办：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl change_password userName newPassword</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003352168-1350202979.png" alt=""></p>
+<p>有的人也许会说，我就是看guest不爽，老子新增了administrator用户了，就是想干掉它，可以：</p>
+<div class="cnblogs_code"><br><br><pre>rabbitmqctl.bat delete_user username</pre><br><br></div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003722731-332310837.png" alt=""></p>
+<p> 这时，可能有人就要问了：命令框是只有一个用户了，你怎么操作啊？怎么查看执行情况啊/</p>
+<p> 当然有路子啦：</p>
+<p>使用浏览器打开<a href="http://localhost:15672/" target="_blank" rel="noopener"> http://localhost:15672</a><a href="http://localhost:15672%C2%A0/" target="_blank" rel="noopener"> </a>访问Rabbit Mq的管理控制台，使用刚才创建的账号登陆系统：</p>
+<p> <img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924004023387-110874920.png" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924004035121-53385779.png" alt=""></p>
+<p>其实，除了可查看所有的信息 ，上面的命令 增删改查、权限设置，都可以在这个页面完成，还可以依据业务需求设置策略(policy)，具体的就不在这里啰嗦了，大家可以看看网上的帖子。</p>
+<h3 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a><span style="font-size: 14px; line-height: 1.5;">权限设置</span></h3><p><span style="font-size: 14px; line-height: 1.5;">用户有了角色，那也需要权限设置啊，别急，慢慢来：</span></p>
+<p>按照官方文档，用户权限指的是用户对exchange，queue的操作权限，包括配置权限，读写权限。</p>
+<p>我们配置权限会影响到exchange、queue的声明和删除。</p>
+<p>读写权限影响到从queue里取消息、向exchange发送消息以及queue和exchange的绑定(binding)操作。</p>
+<p>例如： 将queue绑定到某exchange上，需要具有queue的可写权限，以及exchange的可读权限；向exchange发送消息需要具有exchange的可写权限；从queue里取数据需要具有queue的可读权限</p>
+<p>权限相关命令为：</p>
+<p>(1) 设置用户权限</p>
+<p>rabbitmqctl  set_permissions  -p  VHostPath  User  ConfP  WriteP  ReadP</p>
+<p>(2) 查看(指定hostpath)所有用户的权限信息</p>
+<p>rabbitmqctl  list_permissions  [-p  VHostPath]</p>
+<p>(3) 查看指定用户的权限信息</p>
+<p>rabbitmqctl  list_user_permissions  User</p>
+<p>(4)  清除用户的权限信息</p>
+<p>rabbitmqctl  clear_permissions  [-p VHostPath]  User</p>
+<p>现在环境搭好了，用户、角色、权限全部设置好，开始进行code（原理整理，及编码 待续）</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>安装参考 <a href="http://www.rabbitmq.com/install-windows-manual.html" target="_blank" rel="noopener">http://www.rabbitmq.com/install-windows-manual.html</a></p>
+<p>权限内容参考 <a href="http://www.rabbitmq.com/man/rabbitmqctl.1.man.html" target="_blank" rel="noopener">http://www.rabbitmq.com/man/rabbitmqctl.1.man.html</a></p>
+<p>权限命令摘自 <a href="https://my.oschina.net/hncscwc/blog/262246" target="_blank" rel="noopener">https://my.oschina.net/hncscwc/blog/262246</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/20/windows下安装rabbitmq及操作常用命令/" data-id="cjnctqgku0036wknzj3hyctp3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-关于rabbitmq以及rabbitmq和spring的整合" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/" class="article-date">
+  <time datetime="2017-12-15T09:00:00.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MQ/">MQ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="一、maven依赖"><a href="#一、maven依赖" class="headerlink" title="一、maven依赖"></a>一、maven依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--rabbitmq依赖 --&gt;  </span><br><span class="line">        &lt;dependency&gt;  </span><br><span class="line">            &lt;groupId&gt;org.springframework.amqp&lt;/groupId&gt;  </span><br><span class="line">            &lt;artifactId&gt;spring-rabbit&lt;/artifactId&gt;  </span><br><span class="line">            &lt;version&gt;1.3.5.RELEASE&lt;/version&gt;  </span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="二、消费端spring-rabbitmq-xml"><a href="#二、消费端spring-rabbitmq-xml" class="headerlink" title="二、消费端spring-rabbitmq.xml"></a>二、消费端spring-rabbitmq.xml</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">	xmlns:dubbo=&quot;http://code.alibabatech.com/schema/dubbo&quot; xmlns:rabbit=&quot;http://www.springframework.org/schema/rabbit&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;</span><br><span class="line">        http://www.springframework.org/schema/beans </span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">    http://www.springframework.org/schema/context/spring-context-4.0.xsd</span><br><span class="line">    http://www.springframework.org/schema/rabbit  </span><br><span class="line">    http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--配置connection-factory，指定连接rabbit server参数 --&gt;</span><br><span class="line">	&lt;rabbit:connection-factory id=&quot;connectionFactory&quot;</span><br><span class="line">		virtual-host=&quot;$&#123;rabbitmq.virtualhost&#125;&quot; username=&quot;$&#123;rabbitmq.username&#125;&quot;</span><br><span class="line">		password=&quot;$&#123;rabbitmq.password&#125;&quot; host=&quot;$&#123;rabbitmq.host&#125;&quot; port=&quot;$&#123;rabbitmq.port&#125;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 --&gt;</span><br><span class="line">	&lt;rabbit:admin id=&quot;connectAdmin&quot; connection-factory=&quot;connectionFactory&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--定义queue --&gt;</span><br><span class="line">	&lt;rabbit:queue name=&quot;$&#123;rabbitmq.queue&#125;&quot; durable=&quot;true&quot; auto-delete=&quot;false&quot;</span><br><span class="line">		exclusive=&quot;false&quot; declared-by=&quot;connectAdmin&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 定义direct exchange，绑定queueTest --&gt;</span><br><span class="line">	&lt;!-- &lt;rabbit:direct-exchange name=&quot;$&#123;rabbitmq.direct.exchange&#125;&quot;</span><br><span class="line">		durable=&quot;true&quot; auto-delete=&quot;false&quot; declared-by=&quot;connectAdmin&quot;&gt;</span><br><span class="line">		&lt;rabbit:bindings&gt;</span><br><span class="line">			&lt;rabbit:binding queue=&quot;$&#123;rabbitmq.queue&#125;&quot; key=&quot;$&#123;rabbitmq.queue.queueKey&#125;&quot;&gt;&lt;/rabbit:binding&gt;</span><br><span class="line">		&lt;/rabbit:bindings&gt;</span><br><span class="line">	&lt;/rabbit:direct-exchange&gt; --&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--定义rabbit template用于数据的接收和发送 --&gt;</span><br><span class="line">	&lt;!-- &lt;rabbit:template id=&quot;amqpTemplate&quot; connection-factory=&quot;connectionFactory&quot;</span><br><span class="line">		exchange=&quot;$&#123;rabbitmq.direct.exchange&#125;&quot; /&gt; --&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 消息接收者 --&gt;</span><br><span class="line">	&lt;bean id=&quot;messageReceiver&quot;</span><br><span class="line">		class=&quot;com.showshine.pullq.rabbitmq.OfflineRabbitMessageListener&quot;&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- queue litener 观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象 --&gt;</span><br><span class="line">	&lt;rabbit:listener-container</span><br><span class="line">		connection-factory=&quot;connectionFactory&quot;&gt;</span><br><span class="line">		&lt;rabbit:listener queues=&quot;$&#123;rabbitmq.queue&#125;&quot; ref=&quot;messageReceiver&quot; /&gt;</span><br><span class="line">	&lt;/rabbit:listener-container&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="三、生产spring-rabbitmq-xml"><a href="#三、生产spring-rabbitmq-xml" class="headerlink" title="三、生产spring-rabbitmq.xml"></a>三、生产spring-rabbitmq.xml</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">	xmlns:rabbit=&quot;http://www.springframework.org/schema/rabbit&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;</span><br><span class="line">        http://www.springframework.org/schema/beans </span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">    http://www.springframework.org/schema/context/spring-context-4.0.xsd</span><br><span class="line">    http://www.springframework.org/schema/rabbit  </span><br><span class="line">    http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--配置connection-factory，指定连接rabbit server参数 --&gt;</span><br><span class="line">    &lt;rabbit:connection-factory id=&quot;connectionFactory&quot; virtual-host=&quot;virtualTest&quot; </span><br><span class="line">        username=&quot;user&quot; password=&quot;user&quot; host=&quot;192.168.12.210&quot; port=&quot;5672&quot; </span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 --&gt;</span><br><span class="line">    &lt;rabbit:admin id=&quot;connectAdmin&quot; connection-factory=&quot;connectionFactory&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 定义direct exchange，绑定queueTest --&gt;</span><br><span class="line">    &lt;rabbit:direct-exchange name=&quot;rabbitmqexch&quot;</span><br><span class="line">        durable=&quot;true&quot; auto-delete=&quot;false&quot; declared-by=&quot;connectAdmin&quot;&gt;</span><br><span class="line">    &lt;/rabbit:direct-exchange&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--定义rabbit template用于数据的接收和发送 --&gt;</span><br><span class="line">    &lt;rabbit:template id=&quot;amqpTemplate&quot; connection-factory=&quot;connectionFactory&quot;</span><br><span class="line">        exchange=&quot;rabbitmqexch&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="四、rabbitmq-properties"><a href="#四、rabbitmq-properties" class="headerlink" title="四、rabbitmq.properties"></a>四、rabbitmq.properties</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq.virtualhost=virtualTest</span><br><span class="line">rabbitmq.username=user</span><br><span class="line">rabbitmq.password=user</span><br><span class="line">rabbitmq.host=127.0.0.1</span><br><span class="line">rabbitmq.port=5672</span><br><span class="line">rabbitmq.queue=rabbitque</span><br><span class="line">rabbitmq.queue.queueKey=queueTestKey</span><br><span class="line">rabbitmq.direct.exchange=rabbitmqexch</span><br></pre></td></tr></table></figure>
+<p>五、接收端RabbitMessageListener监听类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.showshine.pullq.rabbitmq;</span><br><span class="line"></span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line">import org.springframework.amqp.core.Message;</span><br><span class="line">import org.springframework.amqp.core.MessageListener;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * &lt;dl&gt;</span><br><span class="line"> * &lt;dt&gt;&lt;b&gt;类功能概要：&lt;/b&gt;&lt;/dt&gt;</span><br><span class="line"> * &lt;dd&gt;信贷业务：rocketmq消费端-线下转线上&lt;/dd&gt;</span><br><span class="line"> * &lt;dd&gt;&lt;/dd&gt;</span><br><span class="line"> * &lt;/dl&gt;</span><br><span class="line"> * </span><br><span class="line"> * @copyright Copyright 2017,(C)The Trustrock Co.Ltd. All right reserved.</span><br><span class="line"> * @since 1.6</span><br><span class="line"> * @version &lt;pre&gt;</span><br><span class="line"> * Version  Date                          Company    Author         Case-Name</span><br><span class="line"> * -------  ------------------------      ---------  -------------  --------------</span><br><span class="line"> * 1.00     2017年12月15日 上午11:54:23     Trustrock  wenyapeng      RocketMessageListener </span><br><span class="line"> * </span><br><span class="line"> * &lt;/pre&gt;</span><br><span class="line"> */</span><br><span class="line">public class OfflineRabbitMessageListener implements MessageListener&#123;</span><br><span class="line">	</span><br><span class="line">	private static Logger logger = Logger.getLogger(OfflineRabbitMessageListener.class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">    public void onMessage(Message message) &#123;</span><br><span class="line">         logger.info(&quot;consumer receive message-------&gt;:&#123;&#125;&quot; + message);  </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="六、发送端"><a href="#六、发送端" class="headerlink" title="六、发送端"></a>六、发送端</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.aliyun.openservices.client;</span><br><span class="line"></span><br><span class="line">import org.junit.Before;</span><br><span class="line">import org.junit.Test;</span><br><span class="line">import org.springframework.amqp.core.AmqpTemplate;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">public class RabbitmqTest &#123;</span><br><span class="line"></span><br><span class="line">	private AmqpTemplate amqpTemplate;</span><br><span class="line"></span><br><span class="line">	private ApplicationContext context = null;</span><br><span class="line"></span><br><span class="line">	@Before</span><br><span class="line">	public void setUp() throws Exception &#123;</span><br><span class="line">		context = new ClassPathXmlApplicationContext(&quot;spring-rabbitmq.xml&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Test</span><br><span class="line">	public void should_send_a_amq_message() throws Exception &#123;</span><br><span class="line">		amqpTemplate = (AmqpTemplate) context.getBean(&quot;amqpTemplate&quot;);</span><br><span class="line">		int a = 2;</span><br><span class="line">		while (a &gt; 0) &#123;</span><br><span class="line">			amqpTemplate.convertAndSend(&quot;queueTestKey&quot;, &quot;wqwqw&quot; + a--);</span><br><span class="line">			try &#123;</span><br><span class="line">				// 暂停一下，好让消息消费者去取消息打印出来</span><br><span class="line">				Thread.sleep(1000);</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/s648667069/p/6401463.html" target="_blank" rel="noopener">参考https://www.cnblogs.com/s648667069/p/6401463.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/" data-id="cjnctqgk00026wknzuqb22iuu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring整合rocketmq" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/15/spring整合rocketmq/" class="article-date">
+  <time datetime="2017-12-15T05:00:00.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MQ/">MQ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="Spring-整合-RocketMQ"><a href="#Spring-整合-RocketMQ" class="headerlink" title="Spring 整合 RocketMQ"></a>Spring 整合 RocketMQ</h5><ol>
+<li>引入jar包</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- RocketMQ --&gt;</span><br><span class="line">        &lt;dependency&gt;  </span><br><span class="line">             &lt;groupId&gt;com.alibaba.rocketmq&lt;/groupId&gt;  </span><br><span class="line">             &lt;artifactId&gt;rocketmq-all&lt;/artifactId&gt;  </span><br><span class="line">             &lt;version&gt;3.2.6&lt;/version&gt;  </span><br><span class="line">             &lt;type&gt;pom&lt;/type&gt;  </span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;  </span><br><span class="line">             &lt;groupId&gt;com.alibaba.rocketmq&lt;/groupId&gt;  </span><br><span class="line">             &lt;artifactId&gt;rocketmq-client&lt;/artifactId&gt;  </span><br><span class="line">             &lt;version&gt;3.2.6&lt;/version&gt;  </span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>2.Spring bean 配置单例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;myProducer&quot; class=&quot;cn.zno.rocketmq.MyProducer&quot;</span><br><span class="line">        init-method=&quot;init&quot;  </span><br><span class="line">        destroy-method=&quot;destroy&quot;</span><br><span class="line">        scope=&quot;singleton&quot;&gt;</span><br><span class="line">　　　　　　&lt;property name=&quot;producerGroup&quot; value=&quot;MyProducerGroup&quot; /&gt;</span><br><span class="line">　　　　　　&lt;property name=&quot;namesrvAddr&quot; value=&quot;127.0.0.1:9876&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;bean class=&quot;cn.zno.rocketmq.MyConsumer&quot; </span><br><span class="line">        init-method=&quot;init&quot; </span><br><span class="line">        destroy-method=&quot;destroy&quot;</span><br><span class="line">        scope=&quot;singleton&quot;&gt;</span><br><span class="line">　　　　　　&lt;property name=&quot;consumerGroup&quot; value=&quot;MyConsumerGroup&quot; /&gt;</span><br><span class="line">　　　　　　&lt;property name=&quot;namesrvAddr&quot; value=&quot;127.0.0.1:9876&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>自定义producer</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">package cn.zno.rocketmq;</span><br><span class="line"></span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">import com.alibaba.rocketmq.client.exception.MQClientException;</span><br><span class="line">import com.alibaba.rocketmq.client.producer.DefaultMQProducer;</span><br><span class="line"></span><br><span class="line">public class MyProducer &#123;</span><br><span class="line"></span><br><span class="line">    private final Logger logger = LoggerFactory.getLogger(MyProducer.class);</span><br><span class="line"></span><br><span class="line">    private DefaultMQProducer defaultMQProducer;</span><br><span class="line">    private String producerGroup;</span><br><span class="line">    private String namesrvAddr;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Spring bean init-method</span><br><span class="line">     */</span><br><span class="line">    public void init() throws MQClientException &#123;</span><br><span class="line">        // 参数信息</span><br><span class="line">        logger.info(&quot;DefaultMQProducer initialize!&quot;);</span><br><span class="line">        logger.info(producerGroup);</span><br><span class="line">        logger.info(namesrvAddr);</span><br><span class="line"></span><br><span class="line">        // 初始化</span><br><span class="line">        defaultMQProducer = new DefaultMQProducer(producerGroup);</span><br><span class="line">        defaultMQProducer.setNamesrvAddr(namesrvAddr);</span><br><span class="line">        defaultMQProducer.setInstanceName(String.valueOf(System.currentTimeMillis()));</span><br><span class="line">        </span><br><span class="line">        defaultMQProducer.start();</span><br><span class="line"></span><br><span class="line">　　　　 logger.info(&quot;DefaultMQProudcer start success!&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Spring bean destroy-method</span><br><span class="line">     */</span><br><span class="line">    public void destroy() &#123;</span><br><span class="line">        defaultMQProducer.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public DefaultMQProducer getDefaultMQProducer() &#123;</span><br><span class="line">        return defaultMQProducer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // ---------------setter -----------------</span><br><span class="line"></span><br><span class="line">    public void setProducerGroup(String producerGroup) &#123;</span><br><span class="line">        this.producerGroup = producerGroup;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setNamesrvAddr(String namesrvAddr) &#123;</span><br><span class="line">        this.namesrvAddr = namesrvAddr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>自定义consumer</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">package cn.zno.rocketmq;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line">import com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer;</span><br><span class="line">import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;</span><br><span class="line">import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;</span><br><span class="line">import com.alibaba.rocketmq.client.consumer.listener.MessageListenerConcurrently;</span><br><span class="line">import com.alibaba.rocketmq.client.exception.MQClientException;</span><br><span class="line">import com.alibaba.rocketmq.common.consumer.ConsumeFromWhere;</span><br><span class="line">import com.alibaba.rocketmq.common.message.MessageExt;</span><br><span class="line">import com.alibaba.rocketmq.common.protocol.heartbeat.MessageModel;</span><br><span class="line"></span><br><span class="line">public class MyConsumer &#123;</span><br><span class="line"></span><br><span class="line">    private final Logger logger = LoggerFactory.getLogger(MyConsumer.class);</span><br><span class="line"></span><br><span class="line">    private DefaultMQPushConsumer defaultMQPushConsumer;</span><br><span class="line">    private String namesrvAddr;</span><br><span class="line">    private String consumerGroup;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Spring bean init-method</span><br><span class="line">     */</span><br><span class="line">    public void init() throws InterruptedException, MQClientException &#123;</span><br><span class="line"></span><br><span class="line">        // 参数信息</span><br><span class="line">        logger.info(&quot;DefaultMQPushConsumer initialize!&quot;);</span><br><span class="line">        logger.info(consumerGroup);</span><br><span class="line">        logger.info(namesrvAddr);</span><br><span class="line"></span><br><span class="line">        // 一个应用创建一个Consumer，由应用来维护此对象，可以设置为全局对象或者单例&lt;br&gt;</span><br><span class="line">        // 注意：ConsumerGroupName需要由应用来保证唯一</span><br><span class="line">        defaultMQPushConsumer = new DefaultMQPushConsumer(consumerGroup);</span><br><span class="line">        defaultMQPushConsumer.setNamesrvAddr(namesrvAddr);</span><br><span class="line">        defaultMQPushConsumer.setInstanceName(String.valueOf(System.currentTimeMillis()));</span><br><span class="line"></span><br><span class="line">        // 订阅指定MyTopic下tags等于MyTag</span><br><span class="line"></span><br><span class="line">        defaultMQPushConsumer.subscribe(&quot;MyTopic&quot;, &quot;MyTag&quot;);</span><br><span class="line"></span><br><span class="line">        // 设置Consumer第一次启动是从队列头部开始消费还是队列尾部开始消费&lt;br&gt;</span><br><span class="line">        // 如果非第一次启动，那么按照上次消费的位置继续消费</span><br><span class="line">        defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);</span><br><span class="line"></span><br><span class="line">        // 设置为集群消费(区别于广播消费)</span><br><span class="line">        defaultMQPushConsumer.setMessageModel(MessageModel.CLUSTERING);</span><br><span class="line"></span><br><span class="line">        defaultMQPushConsumer.registerMessageListener(new MessageListenerConcurrently() &#123;</span><br><span class="line"></span><br><span class="line">            // 默认msgs里只有一条消息，可以通过设置consumeMessageBatchMaxSize参数来批量接收消息</span><br><span class="line">            @Override</span><br><span class="line">            public ConsumeConcurrentlyStatus consumeMessage(List&lt;MessageExt&gt; msgs, ConsumeConcurrentlyContext context) &#123;</span><br><span class="line"></span><br><span class="line">                MessageExt msg = msgs.get(0);</span><br><span class="line">                if (msg.getTopic().equals(&quot;MyTopic&quot;)) &#123;</span><br><span class="line">                    // TODO 执行Topic的消费逻辑</span><br><span class="line">                    if (msg.getTags() != null &amp;&amp; msg.getTags().equals(&quot;MyTag&quot;)) &#123;</span><br><span class="line">                        // TODO 执行Tag的消费</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                // 如果没有return success ，consumer会重新消费该消息，直到return success</span><br><span class="line">                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        // Consumer对象在使用之前必须要调用start初始化，初始化一次即可&lt;br&gt;</span><br><span class="line">        defaultMQPushConsumer.start();</span><br><span class="line"></span><br><span class="line">        logger.info(&quot;DefaultMQPushConsumer start success!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Spring bean destroy-method</span><br><span class="line">     */</span><br><span class="line">    public void destroy() &#123;</span><br><span class="line">        defaultMQPushConsumer.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // ----------------- setter --------------------</span><br><span class="line"></span><br><span class="line">    public void setNamesrvAddr(String namesrvAddr) &#123;</span><br><span class="line">        this.namesrvAddr = namesrvAddr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setConsumerGroup(String consumerGroup) &#123;</span><br><span class="line">        this.consumerGroup = consumerGroup;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>发消息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">    private MyProducer myProducer;</span><br><span class="line"></span><br><span class="line">    public void sendMessage() &#123;</span><br><span class="line">        Message msg = new Message(&quot;MyTopic&quot;, &quot;MyTag&quot;, (JSONObject.fromObject(someMessage)).getBytes());</span><br><span class="line">        SendResult sendResult = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            sendResult = myProducer.getDefaultMQProducer().send(msg);</span><br><span class="line">        &#125; catch (MQClientException e) &#123;</span><br><span class="line">            logger.error(e.getMessage() + String.valueOf(sendResult));</span><br><span class="line">        &#125;</span><br><span class="line">        // 当消息发送失败时如何处理</span><br><span class="line">        if (sendResult == null || sendResult.getSendStatus() != SendStatus.SEND_OK) &#123;</span><br><span class="line">            // TODO</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/15/spring整合rocketmq/" data-id="cjnctqgjw0022wknztqvm13by" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-aes-rsa加密机制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/05/aes-rsa加密机制/" class="article-date">
+  <time datetime="2017-12-05T03:37:00.000Z" itemprop="datePublished">2017-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/加解密/">加解密</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/05/aes-rsa加密机制/">AES-RSA加密机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在服务器与终端设备进行HTTP通讯时，常常会被网络抓包、反编译（Android <a href="https://link.jianshu.com?t=http://idoog.me/?p=2933" target="_blank" rel="noopener">APK反编译工具</a>）等技术得到HTTP通讯接口地址和参数。为了确保信息的安全，我们采用AES+RSA组合的方式进行接口参数加密和解密。</p>
+<p>1.关于RSA加密机制：公钥用于对数据进行加密，私钥对数据进行解密，两者不可逆。公钥和私钥是同时生成的，一一对应。比如：A拥有公钥，B拥有公钥和私钥。A将数据通过公钥进行加密后，发送密文给B，B可以通过私钥和公钥进行解密。</p>
+<p>2.AES加密也叫对称加密：A用密码对数据进行AES加密后，B用同样的密码对密文进行AES解密。</p>
+<p>具体操作方法：</p>
+<p>1.在终端中采用openssl方式输入密钥的相关属性（公司名、邮箱等），然后在终端当前所在的地址下，生成公钥和私钥共7个文件（7个文件如何使用请看附录的拓展了链接）。</p>
+<p>2.此时假设Android客户端拥有公钥PublicKey,服务器端拥有公钥PublicKey和私钥PrivateKey。</p>
+<p>3.安卓发送请求到服务器端：安卓随机生成Byte[]随机密码，假设RandomKey=“123456”，通过AES算法，对Json数据利用进行加密。</p>
+<p>4.但是此刻服务器并不知道客户端的RandomKey是什么，因此需要同时将Randomkey传给服务器，否则服务器无法通过AES对Json数据进行解密。但是如果直接发送请求，Randomkey就会暴露，所以要对RandomKey进行不可逆的RSA加密。</p>
+<p>5.安卓将使用Randomkey进行AES加密的Json数据，和使用PublicKey进行RSA加密的RandomKey通过HTTP传送到服务器端。数据请求工作完成。</p>
+<p>6.服务器端接收到AES加密的Json数据和Rsa加密的RandomKey数据。</p>
+<p>7.服务器通过私钥PrivateKey对加密后的RandomKey进行Rsa解密。得到安卓生成的原始Randomkey。</p>
+<p>8.利用原始的RandomKey对加密后的Json数据进行AES对称解密。至此已经得到安卓端发过来的原始Json数据。进行常规的服务器业务操作，然后将返回数据通过安卓端的RandomKey进行AES加密gouhou后，Response返回。</p>
+<p>9.安卓端接收到Response的数据后，利用之前本地生成的RandomKey直接进行AES解密即可。</p>
+<p>详细的流程图可以查看下图。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/265023-b64e781d365f1200.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="image"></p>
+<p>注意事项：</p>
+<p>1.在实际的开发过程中，发现RSA和AES有不同的密文生成标准，会不兼容IOS。IOS在RSA算法中需要的公钥与JAVA不同。详细的解决方案请查看：<a href="http://www.cnblogs.com/makemelike/articles/3802518.html" target="_blank" rel="noopener">http://www.cnblogs.com/makemelike/articles/3802518.html</a></p>
+<p>2.AES加密不可以使用超过128Byte的KEY，因为在jdk1.7以上的版本不支持超过128Byte的KEY。</p>
+<p>小结：从性能上来测，整个客户端送加密数据开始到解密得到回传的原始数据不超过300ms（Iphone4和Centos Java服务器传输测试）。本方案没有采用TOKEN的方式，或许以后用到。公钥如何更新也需要继续完善。</p>
+<p>附：具体的JAVA和IOS加密解密Demo迟点整理给出。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/05/aes-rsa加密机制/" data-id="cjnctqgi40002wknzt9rk9q85" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AES/">AES</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSA/">RSA</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-对称加密与非对称加密" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/05/对称加密与非对称加密/" class="article-date">
+  <time datetime="2017-12-05T03:37:00.000Z" itemprop="datePublished">2017-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/加解密/">加解密</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/05/对称加密与非对称加密/">对称加密与非对称加密</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="（一）对称加密（Symmetric-Cryptography）"><a href="#（一）对称加密（Symmetric-Cryptography）" class="headerlink" title="（一）对称加密（Symmetric Cryptography）"></a>（一）对称加密（Symmetric Cryptography）</h2><p>对称加密是最快速、最简单的一种加密方式，加密（encryption）与解密（decryption）用的是同样的密钥（secret key）。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。</p>
+<p>对称加密通常使用的是相对较小的密钥，一般小于256 bit。因为密钥越大，加密越强，但加密与解密的过程越慢。如果你只用1 bit来做这个密钥，那黑客们可以先试着用0来解密，不行的话就再用1解；但如果你的密钥有1 MB大，黑客们可能永远也无法破解，但加密和解密的过程要花费很长的时间。密钥的大小既要照顾到安全性，也要照顾到效率，是一个trade-off。</p>
+<p>2000年10月2日，美国国家标准与技术研究所（NIST–<em>American National Institute of Standards and Technology</em>）选择了Rijndael算法作为新的高级加密标准（AES–<em>Advanced</em> <em>Encryption</em> <em>Standard）。</em>.NET中包含了Rijndael算法，类名叫RijndaelManaged，下面举个例子。</p>
+<p>加密过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> string myData = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">private</span> string myPassword = <span class="string">"OpenSesame"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">byte</span>[] cipherText;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">byte</span>[] salt = &#123; <span class="number">0x0</span>, <span class="number">0x1</span>, <span class="number">0x2</span>, <span class="number">0x3</span>, <span class="number">0x4</span>, <span class="number">0x5</span>, <span class="number">0x6</span>, <span class="number">0x5</span>, <span class="number">0x4</span>, <span class="number">0x3</span>, <span class="number">0x2</span>, <span class="number">0x1</span>, <span class="number">0x0</span> &#125;;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mnuSymmetricEncryption_Click</span><span class="params">(object sender, RoutedEventArgs e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> key = <span class="keyword">new</span> Rfc2898DeriveBytes(myPassword, salt);</span><br><span class="line">    <span class="comment">// Encrypt the data.</span></span><br><span class="line">    <span class="keyword">var</span> algorithm = <span class="keyword">new</span> RijndaelManaged();</span><br><span class="line">    algorithm.Key = key.GetBytes(<span class="number">16</span>);</span><br><span class="line">    algorithm.IV = key.GetBytes(<span class="number">16</span>);</span><br><span class="line">    <span class="keyword">var</span> sourceBytes = <span class="keyword">new</span> System.Text.UnicodeEncoding().GetBytes(myData);</span><br><span class="line">    using (<span class="keyword">var</span> sourceStream = <span class="keyword">new</span> MemoryStream(sourceBytes))</span><br><span class="line">    using (<span class="keyword">var</span> destinationStream = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">    using (<span class="keyword">var</span> crypto = <span class="keyword">new</span> CryptoStream(sourceStream, algorithm.CreateEncryptor(), CryptoStreamMode.Read))</span><br><span class="line">    &#123;</span><br><span class="line">        moveBytes(crypto, destinationStream);</span><br><span class="line">        cipherText = destinationStream.ToArray();</span><br><span class="line">    &#125;</span><br><span class="line">    MessageBox.Show(String.Format(<span class="string">"Data:&#123;0&#125;&#123;1&#125;Encrypted and Encoded:&#123;2&#125;"</span>, myData, Environment.NewLine, Convert.ToBase64String(cipherText)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">moveBytes</span><span class="params">(Stream source, Stream dest)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2048</span>];</span><br><span class="line">    <span class="keyword">var</span> count = source.Read(bytes, <span class="number">0</span>, bytes.Length);</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">0</span> != count)</span><br><span class="line">    &#123;</span><br><span class="line">        dest.Write(bytes, <span class="number">0</span>, count);</span><br><span class="line">        count = source.Read(bytes, <span class="number">0</span>, bytes.Length);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解密过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mnuSymmetricDecryption_Click</span><span class="params">(object sender, RoutedEventArgs e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cipherText == <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(<span class="string">"Encrypt Data First!"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> key = <span class="keyword">new</span> Rfc2898DeriveBytes(myPassword, salt);</span><br><span class="line">    <span class="comment">// Try to decrypt, thus showing it can be round-tripped.</span></span><br><span class="line">    <span class="keyword">var</span> algorithm = <span class="keyword">new</span> RijndaelManaged();</span><br><span class="line">    algorithm.Key = key.GetBytes(<span class="number">16</span>);</span><br><span class="line">    algorithm.IV = key.GetBytes(<span class="number">16</span>);</span><br><span class="line">    using (<span class="keyword">var</span> sourceStream = <span class="keyword">new</span> MemoryStream(cipherText))</span><br><span class="line">    using (<span class="keyword">var</span> destinationStream = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">    using (<span class="keyword">var</span> crypto = <span class="keyword">new</span> CryptoStream(sourceStream, algorithm.CreateDecryptor(), CryptoStreamMode.Read))</span><br><span class="line">    &#123;</span><br><span class="line">        moveBytes(crypto, destinationStream);</span><br><span class="line">        <span class="keyword">var</span> decryptedBytes = destinationStream.ToArray();</span><br><span class="line">        <span class="keyword">var</span> decryptedMessage = <span class="keyword">new</span> UnicodeEncoding().GetString(</span><br><span class="line">        decryptedBytes);</span><br><span class="line">        MessageBox.Show(decryptedMessage);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对称加密的一大缺点是密钥的管理与分配，换句话说，如何把密钥发送到需要解密你的消息的人的手里是一个问题。在发送密钥的过程中，密钥有很大的风险会被黑客们拦截。现实中通常的做法是将对称加密的密钥进行非对称加密，然后传送给需要它的人。</p>
+<h2 id="（二）非对称加密（Asymmetric-Cryptography）"><a href="#（二）非对称加密（Asymmetric-Cryptography）" class="headerlink" title="（二）非对称加密（Asymmetric Cryptography）"></a>（二）非对称加密（Asymmetric Cryptography）</h2><p>非对称加密为数据的加密与解密提供了一个非常安全的方法，它使用了一对密钥，公钥（public key）和私钥（private key）。私钥只能由一方安全保管，不能外泄，而公钥则可以发给任何请求它的人。非对称加密使用这对密钥中的一个进行加密，而解密则需要另一个密钥。比如，你向银行请求公钥，银行将公钥发给你，你使用公钥对消息加密，那么只有私钥的持有人–银行才能对你的消息解密。与对称加密不同的是，银行不需要将私钥通过网络发送出去，因此安全性大大提高。</p>
+<p>目前最常用的非对称加密算法是RSA算法，是Rivest, Shamir, 和Adleman于1978年发明，他们那时都是在MIT。.NET中也有RSA算法，请看下面的例子：</p>
+<p>加密过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">byte</span>[] rsaCipherText;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mnuAsymmetricEncryption_Click</span><span class="params">(object sender, RoutedEventArgs e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rsa = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// Encrypt the data.</span></span><br><span class="line">    <span class="keyword">var</span> cspParms = <span class="keyword">new</span> CspParameters(rsa);</span><br><span class="line">    cspParms.Flags = CspProviderFlags.UseMachineKeyStore;</span><br><span class="line">    cspParms.KeyContainerName = <span class="string">"My Keys"</span>;</span><br><span class="line">    <span class="keyword">var</span> algorithm = <span class="keyword">new</span> RSACryptoServiceProvider(cspParms);</span><br><span class="line">    <span class="keyword">var</span> sourceBytes = <span class="keyword">new</span> UnicodeEncoding().GetBytes(myData);</span><br><span class="line">    rsaCipherText = algorithm.Encrypt(sourceBytes, <span class="keyword">true</span>);</span><br><span class="line">    MessageBox.Show(String.Format(<span class="string">"Data: &#123;0&#125;&#123;1&#125;Encrypted and Encoded: &#123;2&#125;"</span>,</span><br><span class="line">        myData, Environment.NewLine,</span><br><span class="line">        Convert.ToBase64String(rsaCipherText)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解密过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mnuAsymmetricDecryption_Click</span><span class="params">(object sender, RoutedEventArgs e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(rsaCipherText==<span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(<span class="string">"Encrypt First!"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> rsa = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// decrypt the data.</span></span><br><span class="line">    <span class="keyword">var</span> cspParms = <span class="keyword">new</span> CspParameters(rsa);</span><br><span class="line">    cspParms.Flags = CspProviderFlags.UseMachineKeyStore;</span><br><span class="line">    cspParms.KeyContainerName = <span class="string">"My Keys"</span>;</span><br><span class="line">    <span class="keyword">var</span> algorithm = <span class="keyword">new</span> RSACryptoServiceProvider(cspParms);</span><br><span class="line">    <span class="keyword">var</span> unencrypted = algorithm.Decrypt(rsaCipherText, <span class="keyword">true</span>);</span><br><span class="line">    MessageBox.Show(<span class="keyword">new</span> UnicodeEncoding().GetString(unencrypted));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然非对称加密很安全，但是和对称加密比起来，它非常的慢，所以我们还是要用对称加密来传送消息，但对称加密所使用的密钥我们可以通过非对称加密的方式发送出去。为了解释这个过程，请看下面的例子：</p>
+<p>（1） Alice需要在银行的网站做一笔交易，她的浏览器首先生成了一个随机数作为对称密钥。</p>
+<p>（2） Alice的浏览器向银行的网站请求公钥。</p>
+<p>（3） 银行将公钥发送给Alice。</p>
+<p>（4） Alice的浏览器使用银行的公钥将自己的对称密钥加密。</p>
+<p>（5） Alice的浏览器将加密后的对称密钥发送给银行。</p>
+<p>（6） 银行使用私钥解密得到Alice浏览器的对称密钥。</p>
+<p>（7） Alice与银行可以使用对称密钥来对沟通的内容进行加密与解密了。</p>
+<p><a href="http://images.cnitblog.com/blog/442200/201410/121924251089094.png" target="_blank" rel="noopener"><img src="http://images.cnitblog.com/blog/442200/201410/121924258581724.png" alt="image_thumb3" title="image_thumb3"></a></p>
+<h2 id="（三）总结"><a href="#（三）总结" class="headerlink" title="（三）总结"></a>（三）总结</h2><p>（1） 对称加密加密与解密使用的是同样的密钥，所以速度快，但由于需要将密钥在网络传输，所以安全性不高。</p>
+<p>（2） 非对称加密使用了一对密钥，公钥与私钥，所以安全性高，但加密与解密速度慢。</p>
+<p>（3） 解决的办法是将对称加密的密钥使用非对称加密的公钥进行加密，然后发送出去，接收方使用私钥进行解密得到对称加密的密钥，然后双方可以使用对称加密来进行沟通。</p>
+<p>原创地址：<a href="http://www.cnblogs.com/jfzhu/p/4020928.html" target="_blank" rel="noopener">http://www.cnblogs.com/jfzhu/p/4020928.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/05/对称加密与非对称加密/" data-id="cjnctqgkr0034wknz5by4tv0q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSA/">RSA</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jprofiler_remote_linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/05/jprofiler_remote_linux/" class="article-date">
+  <time datetime="2017-12-05T03:37:00.000Z" itemprop="datePublished">2017-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/05/jprofiler_remote_linux/">jprofiler_监控远程linux服务器的JVM进程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="jprofiler-监控远程linux服务器的JVM进程-实践"><a href="#jprofiler-监控远程linux服务器的JVM进程-实践" class="headerlink" title="jprofiler_监控远程linux服务器的JVM进程(实践)"></a>jprofiler_监控远程linux服务器的JVM进程(实践)</h3><p>几天前写了一篇文章，<a href="http://www.cnblogs.com/gossip/p/6090979.html" target="_blank" rel="noopener">jprofiler_监控远程linux服务器的tomcat进程(实践)</a>，介绍了使用jprofiler怎样监控远程linux的tomcat进程，这两天想了想，除了可以监控tomcat进程，是不是也可以监控其它的Java进程，可是找了一圈都是监控tomcat，于是就打算亲手实验一下本文打算把一个简单的java程序打包成jar包，并部署到linux服务器运行，然后使用jprofiler监控该jar包java程序可参考文章：<a href="http://www.cnblogs.com/gossip/p/6093705.html" target="_blank" rel="noopener">Java部署_IntelliJ创建一个可运行的jar包（实践）</a><div><br><strong>操作步骤如下：</strong><br>1、将jar包拷贝到linux并运行<br><img src="https://yapengwen.github.io/img/35158-20161123152222393-97209354.png" alt=""><br>2、使用jprofiler的<code>jpenable</code>工具对jar包进行监控（需要先在linux安装解压jprofiler）<br>jpenable目录：/usr/local/jprofiler9/bin<br>最后输出：You can now use the JProfiler…代表运行成功<img src="https://yapengwen.github.io/img/35158-20161123152222784-1667486593.png" alt=""><br>3、JProfiler启动远程监控<br>Session–&gt;NewSession<img src="https://yapengwen.github.io/img/35158-20161123152223300-1537569135.png" alt=""><br>监控到对象<img src="https://yapengwen.github.io/img/35158-20161123152223893-970376784.png" alt=""></div></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/12/05/jprofiler_remote_linux/" data-id="cjnctqgjj001nwknz12wx0t40" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring-boot_条件加载" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/17/spring-boot_条件加载/" class="article-date">
+  <time datetime="2017-10-17T03:37:00.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/spring-boot_条件加载/">springboot根据不同的条件创建bean</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="springboot根据不同的条件创建bean，动态创建bean，-Conditional注解使用"><a href="#springboot根据不同的条件创建bean，动态创建bean，-Conditional注解使用" class="headerlink" title="springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用"></a>springboot根据不同的条件创建bean，动态创建bean，@Conditional注解使用</h2><p>这个需求应该也比较常见，在不同的条件下创建不同的bean，具体场景很多，能看到这篇的肯定懂我的意思。<br>倘若不了解spring4.X新加入的@Conditional注解的话，要实现不同条件创建不同的bean还是比较麻烦的，可能需要硬编码一些东西做if判断。那么现在有个@Conditional注解后，事情就简单多了。用法很简单，直接上代码。<br>新建一个springboot项目，添加一个Configuration标注的类，我们通过不同的条件表达式来创建bean。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tianyalei.condition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Conditional;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Conditional</span>(MyCondition.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">condition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"自定义的condition的match方法返回值为true时，才会进入该方法创建bean"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 该Abc class位于类路径上时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnClass</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">abc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnClass true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @ConditionalOnClass(Abc.class)</span></span><br><span class="line"><span class="comment">//    @Bean</span></span><br><span class="line"><span class="comment">//    public Abc newAbc() &#123;</span></span><br><span class="line"><span class="comment">//        System.err.println("ConditionalOnClass true");</span></span><br><span class="line"><span class="comment">//        return new Abc();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 存在Abc类的实例时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnBean</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">bean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnBean is exist"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(Abc.class)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">missBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"ConditionalOnBean is missing"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 表达式为true时</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnExpression</span>(value = <span class="string">"true"</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">expresssion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"expresssion is true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置文件属性是否为true</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty</span>(</span><br><span class="line">            value = &#123;<span class="string">"abc.property"</span>&#125;,</span><br><span class="line">            matchIfMissing = <span class="keyword">false</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">property</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"property is true"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里面有个空类Abc.class，你可以就创建个叫Abc的类，里面是空的就行。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Condition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ConditionContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.AnnotatedTypeMetadata;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCondition</span> <span class="keyword">implements</span> <span class="title">Condition</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//判断当前系统是Mac，Windows，Linux</span></span><br><span class="line">        <span class="keyword">return</span> conditionContext.getEnvironment().getProperty(<span class="string">"os.name"</span>).contains(<span class="string">"Mac"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>@Conditional(MyCondition.class)</strong><br>这句代码可以标注在类上面，表示该类下面的所有@Bean都会启用配置<br>也可以标注在方法上面，只是对该方法启用配置</p>
+<p>除了自己自定义Condition之外，Spring还提供了很多Condition给我们用<br><strong>@ConditionalOnBean</strong>（仅仅在当前上下文中存在某个对象时，才会实例化一个Bean）<br><strong>@ConditionalOnClass</strong>（某个class位于类路径上，才会实例化一个Bean）<br><strong>@ConditionalOnExpression</strong>（当表达式为true的时候，才会实例化一个Bean）<br><strong>@ConditionalOnMissingBean</strong>（仅仅在当前上下文中不存在某个对象时，才会实例化一个Bean）<br><strong>@ConditionalOnMissingClass</strong>（某个class类路径上不存在的时候，才会实例化一个Bean）<br><strong>@ConditionalOnNotWebApplication</strong>（不是web应用）<br>以上是一些常用的注解，其实就是条件判断，如果为true了就创建Bean，为false就不创建，就这么简单。<br>这些注解里的条件可以是多个，也可以赋默认值，也可以标注在类上，如果标注在类上，则对类里的所有@Bean方法都生效。<br>其中@ConditionalOnProperty是指在application.yml里配置的属性是否为true，其他的几个都是对class的判断。<br>我在配置里加上abc.property = true这个配置就可以测试上面的代码了。<br>然后再来一个对类进行多个条件标注的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tianyalei.condition;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnClass;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by wuweifeng on 2017/10/11.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(</span><br><span class="line">        value = &#123;<span class="string">"abc.property"</span>&#125;,</span><br><span class="line">        matchIfMissing = <span class="keyword">false</span></span><br><span class="line">)</span><br><span class="line"><span class="meta">@ConditionalOnClass</span>(Abc.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Multi</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span>(&#123;Abc.class&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.err.println(<span class="string">"multi check"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"check"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>OK，代码很简单，运行看看结果<br><img src="https://yapengwen.github.io/img/20171011114902806.jpg" alt=""><br>可能上面的那些你用的地方不常见，那我来举一个我正在使用的例子。我的应用是基于SpringCloud的，在线上部署时有eureka来做注册中心，而在本地环境下，我的应用是单机的，不需要eureka，但是代码里已经引入了eureka了，每次启动就会自动去连接eureka，然后控制台就开始报错。虽然不影响功能，但是看着一直不停的报错也是不顺眼。<br>那么我就可以使用Condition注解来解决它。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wuweifeng wrote on 2017/11/25.</span></span><br><span class="line"><span class="comment"> * 根据部署环境动态决定是否启用eureka</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(value = <span class="string">"open.eureka"</span>)</span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JudgeEnableDiscoveryClient</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我把EnableDiscoveryClient这个注解单独放个类里，里面什么也不写，条件就是application.yml里配置的open.eureka<br>如果我只想让线上的环境开启eureka，那么我就在application-prod.yml里配上open.eureka=true，其他的yml什么也不写就行了。这样本地启动时就相当于没有开启EnableDiscoveryClient。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/10/17/spring-boot_条件加载/" data-id="cjnctqgjr001vwknz35czj8vp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jetty_springMVC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/17/jetty_springMVC/" class="article-date">
+  <time datetime="2017-10-17T03:37:00.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/jetty_springMVC/">内置jetty服务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Jetty 是高性能的 Servlet 容器，经常会在开发环境中作为服务器来使用。在本文中，我们将使用 Spring Web MVC 技术来实现 REST 接口，并使用 使用 Jetty 作为内嵌服务器，方便测试。</p>
+<h2 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h2><p>我们将会在系统中实现两个接口：</p>
+<ul>
+<li>GET <a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a></li>
+<li>GET <a href="http://localhost:8080/hello/way" target="_blank" rel="noopener">http://localhost:8080/hello/way</a></li>
+</ul>
+<p>其中，第一个接口“/hello”将会返回“Hello World!” 的字符串；而第二个接口“/hello/way”则会返回一个包含用户信息的JSON字符串。</p>
+<h2 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h2><p>我们需要在应用中添加如下依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">    &lt;spring.version&gt;5.0.4.RELEASE&lt;/spring.version&gt;</span><br><span class="line">    &lt;jetty.version&gt;9.4.9.v20180320&lt;/jetty.version&gt;</span><br><span class="line">    &lt;jackson.version&gt;2.9.4&lt;/jackson.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;spring.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jetty-servlet&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;jetty.version&#125;&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;jackson.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;jackson.version&#125;&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<p>其中，</p>
+<ul>
+<li><code>spring-webmvc</code> 是为了使用 Spring MVC 的功能。</li>
+<li><code>jetty-servlet</code>是为了提供内嵌的 Servlet 容器，这样我们就无需依赖外部的容器，可以直接运行我们的应用。</li>
+<li><code>jackson-core</code> 和 <code>jackson-databind</code> 为我们的应用提供 JSON 序列化的功能。</li>
+</ul>
+<h2 id="后台编码实现"><a href="#后台编码实现" class="headerlink" title="后台编码实现"></a>后台编码实现</h2><h3 id="领域模型"><a href="#领域模型" class="headerlink" title="领域模型"></a>领域模型</h3><p>创建一个 User 类，代表用户信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String username, Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h3><p>创建 HelloController 用于处理用户的请求。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World! Welcome to visit waylau.com!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello/way"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">helloWay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(<span class="string">"Way Lau"</span>, <span class="number">30</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，映射到“/hello”的方法将会返回“Hello World!” 的字符串；而映射到“/hello/way”则会返回一个包含用户信息的JSON字符串。</p>
+<h2 id="应用配置"><a href="#应用配置" class="headerlink" title="应用配置"></a>应用配置</h2><p>在本应用中，我们采用基于 Java  注解的配置。</p>
+<p>AppConfiguration 是我们的主应用配置：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = &#123; <span class="string">"com.waylau.spring"</span> &#125;)  </span><br><span class="line"><span class="meta">@Import</span>(&#123; MvcConfiguration.class &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>AppConfiguration 会扫描“com.waylau.spring”包下的文件，并自动将相关的 bean 进行注册。</p>
+<p>AppConfiguration 同时又引入了 MVC 的配置类 MvcConfiguration：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MvcConfiguration</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">extendMessageConverters</span><span class="params">(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</span> </span>&#123;</span><br><span class="line">        converters.add(<span class="keyword">new</span> MappingJackson2HttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MvcConfiguration 配置类一方面启用了 MVC 的功能，另一方面添加了 Jackson JSON 的转换器。</p>
+<p>最后，我们需要引入 Jetty 服务器 JettyServer：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.eclipse.jetty.server.Server;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.jetty.servlet.ServletContextHandler;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.jetty.servlet.ServletHolder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.context.ContextLoaderListener;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.context.WebApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.context.support.AnnotationConfigWebApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.DispatcherServlet;</span><br><span class="line"><span class="keyword">import</span> com.waylau.spring.mvc.configuration.AppConfiguration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JettyServer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_PORT = <span class="number">8080</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String CONTEXT_PATH = <span class="string">"/"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MAPPING_URL = <span class="string">"/*"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Server server = <span class="keyword">new</span> Server(DEFAULT_PORT);</span><br><span class="line">        server.setHandler(servletContextHandler(webApplicationContext()));</span><br><span class="line">        server.start();</span><br><span class="line">        server.join();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ServletContextHandler <span class="title">servletContextHandler</span><span class="params">(WebApplicationContext context)</span> </span>&#123;</span><br><span class="line">        ServletContextHandler handler = <span class="keyword">new</span> ServletContextHandler();</span><br><span class="line">        handler.setContextPath(CONTEXT_PATH);</span><br><span class="line">        handler.addServlet(<span class="keyword">new</span> ServletHolder(<span class="keyword">new</span> DispatcherServlet(context)), MAPPING_URL);</span><br><span class="line">        handler.addEventListener(<span class="keyword">new</span> ContextLoaderListener(context));</span><br><span class="line">        <span class="keyword">return</span> handler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> WebApplicationContext <span class="title">webApplicationContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AnnotationConfigWebApplicationContext context = <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        context.register(AppConfiguration.class);</span><br><span class="line">        <span class="keyword">return</span> context;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JettyServer 将会在 Application 类中进行启动：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> JettyServer().run();;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="11-13-6-运行"><a href="#11-13-6-运行" class="headerlink" title="11.13.6 运行"></a><a name="t6"></a>11.13.6 运行</h2><p>在编辑器中，直接运行 Application 类即可。启动之后，应能看到如下控制台信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52.665</span>:INFO::main: Logging initialized @<span class="number">203</span>ms to org.eclipse.jetty.util.log.StdErrLog</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52.868</span>:INFO:oejs.Server:main: jetty-<span class="number">9.4</span>.9.v20180320; built: <span class="number">2018</span>-<span class="number">03</span>-<span class="number">20</span>T20:<span class="number">21</span>:<span class="number">10</span>+<span class="number">08</span>:<span class="number">00</span>; git: <span class="number">1f</span>8159b1e4a42d3f79997021ea1609f2fbac6de5; jvm <span class="number">1.8</span>.0_112-b15</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52.902</span>:INFO:oejshC.ROOT:main: Initializing Spring root WebApplicationContext</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">52</span> 下午 org.springframework.web.context.ContextLoader initWebApplicationContext</span><br><span class="line">信息: Root WebApplicationContext: initialization started</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">52</span> 下午 org.springframework.context.support.AbstractApplicationContext prepareRefresh</span><br><span class="line">信息: Refreshing Root WebApplicationContext: startup date [Wed Mar <span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52</span> CST <span class="number">2018</span>]; root of context hierarchy</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">52</span> 下午 org.springframework.web.context.support.AnnotationConfigWebApplicationContext loadBeanDefinitions</span><br><span class="line">信息: Registering annotated classes: [class com.waylau.spring.mvc.configuration.AppConfiguration]</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry register</span><br><span class="line">信息: Mapped <span class="string">"&#123;[/hello]&#125;"</span> onto <span class="keyword">public</span> java.lang.String com.waylau.spring.mvc.controller.HelloController.hello()</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry register</span><br><span class="line">信息: Mapped <span class="string">"&#123;[/hello/way]&#125;"</span> onto <span class="keyword">public</span> com.waylau.spring.mvc.vo.User com.waylau.spring.mvc.controller.HelloController.helloWay()</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter initControllerAdviceCache</span><br><span class="line">信息: Looking <span class="keyword">for</span> <span class="meta">@ControllerAdvice</span>: Root WebApplicationContext: startup date [Wed Mar <span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">52</span> CST <span class="number">2018</span>]; root of context hierarchy</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.context.ContextLoader initWebApplicationContext</span><br><span class="line">信息: Root WebApplicationContext: initialization completed in <span class="number">983</span> ms</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">53.893</span>:INFO:oejshC.ROOT:main: Initializing Spring FrameworkServlet <span class="string">'org.springframework.web.servlet.DispatcherServlet-6aaa5eb0'</span></span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.FrameworkServlet initServletBean</span><br><span class="line">信息: FrameworkServlet <span class="string">'org.springframework.web.servlet.DispatcherServlet-6aaa5eb0'</span>: initialization started</span><br><span class="line">三月 <span class="number">21</span>, <span class="number">2018</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">53</span> 下午 org.springframework.web.servlet.FrameworkServlet initServletBean</span><br><span class="line">信息: FrameworkServlet <span class="string">'org.springframework.web.servlet.DispatcherServlet-6aaa5eb0'</span>: initialization completed in <span class="number">15</span> ms</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">53.910</span>:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@<span class="number">2796</span>aeae&#123;/,<span class="keyword">null</span>,AVAILABLE&#125;</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">54.037</span>:INFO:oejs.AbstractConnector:main: Started ServerConnector@<span class="number">42054532</span>&#123;HTTP/<span class="number">1.1</span>,[http/<span class="number">1.1</span>]&#125;&#123;<span class="number">0.0</span>.0.0:<span class="number">8080</span>&#125;</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">21</span> <span class="number">23</span>:<span class="number">14</span>:<span class="number">54.038</span>:INFO:oejs.Server:main: Started @<span class="number">1578</span>ms</span><br></pre></td></tr></table></figure>
+<p>分别在浏览器中访问 “<a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a>” 和 “<a href="http://localhost:8080/hello/way" target="_blank" rel="noopener">http://localhost:8080/hello/way</a>” 地址进行测试，能看到图1和图2的响应效果。</p>
+<p><img src="/https://yapengwen.github.io/img/20180327-mvc-rest-hello.jpg" alt="图1 “/hello”接口的返回内容"></p>
+<p><img src="/https://yapengwen.github.io/img/20180327-mvc-rest-json.jpg" alt="图2 “/hello/way”接口的返回内容"></p>
+<h2 id="参考应用"><a href="#参考应用" class="headerlink" title="参考应用"></a>参考应用</h2><ul>
+<li>源码:见《Spring 5 案例大全》（<a href="https://github.com/waylau/spring-5-book" target="_blank" rel="noopener">https://github.com/waylau/spring-5-book</a>）的 “s5-ch11-mvc-rest”应用。</li>
+<li>原文同步至：<a href="https://waylau.com/spring-mvc-use-jetty/" target="_blank" rel="noopener">https://waylau.com/spring-mvc-use-jetty/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yapengwen.github.io/2017/10/17/jetty_springMVC/" data-id="cjnctqgkp0033wknz3vgvvmey" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jetty/">jetty</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-mvc/">spring mvc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/加解密/">加解密</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/流程图/">流程图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AES/">AES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atom/">Atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DRUID/">DRUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EGIT/">EGIT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RSA/">RSA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/">RabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/">RocketMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arithmetic/">arithmetic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generator/">generator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jetty/">jetty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jprofiler/">jprofiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uml/">uml</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AES/" style="font-size: 10px;">AES</a> <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Atom/" style="font-size: 10px;">Atom</a> <a href="/tags/DRUID/" style="font-size: 10px;">DRUID</a> <a href="/tags/EGIT/" style="font-size: 10px;">EGIT</a> <a href="/tags/GitHub/" style="font-size: 20px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MyBatis/" style="font-size: 10px;">MyBatis</a> <a href="/tags/RSA/" style="font-size: 15px;">RSA</a> <a href="/tags/RabbitMQ/" style="font-size: 15px;">RabbitMQ</a> <a href="/tags/RocketMQ/" style="font-size: 10px;">RocketMQ</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/generator/" style="font-size: 10px;">generator</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jetty/" style="font-size: 10px;">jetty</a> <a href="/tags/jprofiler/" style="font-size: 10px;">jprofiler</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/17/java设计模式/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/druid_解密数据库密码/">配置Druid解密数据库密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/windows下安装rabbitmq及操作常用命令/">windows下安装rabbitMQ及操作常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/关于rabbitmq以及rabbitmq和spring的整合/">关于RabbitMQ以及RabbitMQ和Spring的整合</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/15/spring整合rocketmq/">Spring整合RocketMQ</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 yapengWen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
