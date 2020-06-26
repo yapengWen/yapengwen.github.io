@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.5"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.5"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>GitHub 基本常用知识解答 | Calm sea</title><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">GitHub 基本常用知识解答</h1><a id="logo" href="/.">Calm sea</a><p class="description">Whatever is worth doing is worth doing well.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">GitHub 基本常用知识解答</h1><div class="post-meta"><a href="/2017/07/18/git/git-GitHub%20%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E8%A7%A3%E7%AD%94/#comments" class="comment-count"></a><p><span class="date">Jul 18, 2017</span><span><a href="/categories/git/" class="category">git</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>1、Fork、Watch、Star 是什么意思？</p>
+<p>fork的意思是从别人的代码库中复制一份到你自己的代码库，与普通的复制不同，fork包含了原有库中的所有提交记录，</p>
+<p>fork后这个代码库是完全独立的，属于你自己，你可以在自己的库中做任何修改，当然也可以通过Pull Request向原来的库提交合并请求。</p>
+<p>顺便说一下Watch和Star：</p>
+<ul>
+<li><p>Watch，意思是关注，关注后，代码库中有新的commit你都会收到通知；</p>
+</li>
+<li><p>Star，与watch不同，star相当于收藏，你可以方便地找到你star过的库，但是不会收到关于那个库的任何通知。</p>
+</li>
+</ul>
+<p>2、gitHub 上的SSH公钥 是什么意思 ？</p>
+<p> 作用：使用SSH公钥可以让你在你的电脑和Git@OSC通讯的时候使用安全连接</p>
+<p>通常，通过ssh登录远程服务器时，使用<strong>密码认证</strong>，分别输入用户名和密码，两者满足一定规则就可以登录。但是密码认证有以下的缺点：</p>
+<ul>
+<li>用户无法设置空密码（即使系统允许空密码，也会十分危险）</li>
+<li>密码容易被人偷窥或猜到</li>
+<li>服务器上的一个帐户若要给多人使用，则必须让所有使用者都知道密码，导致密码容易泄露，而且修改密码时必须通知所有人</li>
+</ul>
+<p>而使用<strong>公钥认证</strong>则可以解决上述问题。</p>
+<ul>
+<li>公钥认证允许使用空密码，省去每次登录都需要输入密码的麻烦</li>
+<li>多个使用者可以通过各自的密钥登录到系统上的同一个用户</li>
+</ul>
+<p>公钥认证的原理</p>
+<p>所谓的<strong>公钥认证</strong>，实际上是使用一对加密字符串，一个称为<strong>公钥</strong>(public key)，任何人都可以看到其内容，用于加密；</p>
+<p>另一个称为<strong>密钥</strong>(private key)，只有拥有者才能看到，用于解密。通过公钥加密过的密文使用密钥可以轻松解密，但根据公钥来猜测密钥却十分困难。</p>
+<p>ssh 的公钥认证就是使用了这一特性。服务器和客户端都各自拥有自己的公钥和密钥。</p>
+<p>为了说明方便，以下将使用这些符号。</p>
+<p>| Ac | 客户端公钥 |<br>| Bc | 客户端密钥 |<br>| As | 服务器公钥 |<br>| Bs | 服务器密钥 |</p>
+<p>在认证之前，客户端需要通过某种方法将公钥 Ac 登录到服务器上。</p>
+<p>认证过程分为两个步骤。</p>
+<ol>
+<li>会话密钥(session key)生成<ol>
+<li>客户端请求连接服务器，服务器将 As 发送给客户端。</li>
+<li>服务器生成<strong>会话ID</strong>(session id)，设为 p，发送给客户端。</li>
+<li>客户端生成<strong>会话密钥</strong>(session key)，设为 q，并计算 r = p xor q。</li>
+<li>客户端将 r 用 As 进行加密，结果发送给服务器。</li>
+<li>服务器用 Bs 进行解密，获得 r。</li>
+<li>服务器进行 r xor p 的运算，获得 q。</li>
+<li>至此服务器和客户端都知道了<strong>会话密钥</strong>q，以后的传输都将被 q 加密。</li>
+</ol>
+</li>
+<li>认证<ol>
+<li>服务器生成随机数 x，并用 Ac 加密后生成结果 S(x)，发送给客户端</li>
+<li>客户端使用 Bc 解密 S(x) 得到 x</li>
+<li>客户端计算 q + x 的 md5 值 n(q+x)，q为上一步得到的会话密钥</li>
+<li>服务器计算 q + x 的 md5 值 m(q+x)</li>
+<li>客户端将 n(q+x) 发送给服务器</li>
+<li>服务器比较 m(q+x) 和 n(q+x)，两者相同则认证成功</li>
+</ol>
+</li>
+</ol>
+<p><strong>3、.gitignore文件</strong></p>
+<p>.gitignore顾名思义就是告诉git需要忽略的文件，这是一个很重要并且很实用的文件。</p>
+<p>一般我们写完代码后会执行编译、调试等操作，这期间会产生很多中间文件和可执行文件，这些都不是代码文件，是不需要git来管理的。</p>
+<p>我们在git status的时候会看到很多这样的文件，如果用git add -A来添加的话会把他们都加进去，而手动一个个添加的话也太麻烦了。</p>
+<p>这时我们就需要.gitignore了。比如一般c#的项目我的.gitignore是这样写的：</p>
+<p><strong>4、Git fetch和git pull的区别</strong></p>
+<p> Git中从远程的分支获取最新的版本到本地有这样2个命令：</p>
+<p> 1.git fetch：相当于是从远程获取最新版本到本地，不会自动merge</p>
+<p> git fetch origin master<br> git log -p master..origin/master<br> git merge origin/master   以上命令的含义：</p>
+<p> 首先从远程的origin的master主分支下载最新的版本到origin/master分支上<br> 然后比较本地的master分支和origin/master分支的差别<br> 最后进行合并<br> 上述过程其实可以用以下更清晰的方式来进行：</p>
+<p> git fetch origin master:tmp<br> git diff tmp<br> git merge tmp</p>
+<p>从远程获取最新的版本到本地的test分支上之后再进行比较合并</p>
+<p>2.git pull：相当于是从远程获取最新版本并merge到本地</p>
+<p> git pull origin master</p>
+<p> 上述命令其实相当于git fetch 和 git merge<br> 在实际使用中，git fetch更安全一些因为在merge前，我们可以查看更新情况，然后再决定是否合并</p>
+</div><div class="post-copyright"><blockquote><p>原文作者: yapengWen</p><p>原文链接: <a href="http://yoursite.com/2017/07/18/git/git-GitHub 基本常用知识解答/">http://yoursite.com/2017/07/18/git/git-GitHub 基本常用知识解答/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/GitHub/">GitHub</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2017/07/18/git/git-GitHub%20%E5%9F%BA%E6%9C%AC%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E8%A7%A3%E7%AD%942/" class="pre">GitHub 基本常用知识解答2</a><a href="/2017/07/18/git/git-github%20%E5%BF%AB%E9%80%9F%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C/" class="next">github 快速实现多人协作</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/java/socket/Mina%E6%8A%A5%E6%96%87%E9%80%9A%E4%BF%A1%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/">Mina报文通信简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/31/java/eclipse/eclipse%E4%B8%AD%E6%B3%A8%E9%87%8A%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8/">eclipse中注释模板使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/17/java/Druid/druid_%E8%A7%A3%E5%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E7%A0%81/">配置Druid解密数据库密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/java/rabbitmaq/windows%E4%B8%8B%E5%AE%89%E8%A3%85rabbitmq%E5%8F%8A%E6%93%8D%E4%BD%9C%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">windows下安装rabbitMQ及操作常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/15/java/rabbitmaq/%E5%85%B3%E4%BA%8Erabbitmq%E4%BB%A5%E5%8F%8Arabbitmq%E5%92%8Cspring%E7%9A%84%E6%95%B4%E5%90%88/">关于RabbitMQ以及RabbitMQ和Spring的整合</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/15/java/rabbitmaq/spring%E6%95%B4%E5%90%88rocketmq/">Spring整合RocketMQ</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/java/JVM/jprofiler_remote_linux/">jprofiler_监控远程linux服务器的JVM进程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/java/%E5%8A%A0%E8%A7%A3%E5%AF%86/aes-rsa%E5%8A%A0%E5%AF%86%E6%9C%BA%E5%88%B6/">AES-RSA加密机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/java/%E5%8A%A0%E8%A7%A3%E5%AF%86/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/">对称加密与非对称加密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/java/%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">基本设计模式</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%81%E7%A8%8B%E5%9B%BE/">流程图</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/Anaconda/" style="font-size: 15px;">Anaconda</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Atom/" style="font-size: 15px;">Atom</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/uml/" style="font-size: 15px;">uml</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/DRUID/" style="font-size: 15px;">DRUID</a> <a href="/tags/UUID/" style="font-size: 15px;">UUID</a> <a href="/tags/eclipse/" style="font-size: 15px;">eclipse</a> <a href="/tags/jetty/" style="font-size: 15px;">jetty</a> <a href="/tags/MQ/" style="font-size: 15px;">MQ</a> <a href="/tags/mina/" style="font-size: 15px;">mina</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 15px;">加解密</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">7</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">yapengWen.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.5"></script><div id="fullscreen-img" class="hide"><span class="close"></span></div><script type="text/javascript" src="/js/imgview.js?v=2.0.5" async></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.5" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>

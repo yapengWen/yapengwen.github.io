@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.5"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.5"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>windows下安装rabbitMQ及操作常用命令 | Calm sea</title><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">windows下安装rabbitMQ及操作常用命令</h1><a id="logo" href="/.">Calm sea</a><p class="description">Whatever is worth doing is worth doing well.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">windows下安装rabbitMQ及操作常用命令</h1><div class="post-meta"><a href="/2017/12/20/java/rabbitmaq/windows%E4%B8%8B%E5%AE%89%E8%A3%85rabbitmq%E5%8F%8A%E6%93%8D%E4%BD%9C%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#comments" class="comment-count"></a><p><span class="date">Dec 20, 2017</span><span><a href="/categories/java/" class="category">java</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>rabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。</p>
+<h2 id="1-安装Erlang"><a href="#1-安装Erlang" class="headerlink" title="1.安装Erlang "></a>1.安装<span style="font-size: 18.018px; line-height: 31.5315px;">Erlang</span><span style="font-size: 18.018px; line-height: 31.5315px;"> </span></h2><p>所以在安装rabbitMQ之前，需要先安装Erlang 。</p>
+<p>小编使用的是<a href="https://pan.baidu.com/s/1c2826rA" target="_blank" rel="noopener">otp_win64_18.1</a> ，需要其他版本或者32位系统的，可以去<a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">官网</a>下载。</p>
+<p>全部点击“下一步”就行。</p>
+<p>有的选择其他的安装方式，可能需要添加一下系统环境变量（正常安装的也要检查下）：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160923235447637-1807926011.png" alt=""></p>
+<p>有最好，没有的话就手动添加嘛。</p>
+<h2 id="2-安装RabbitMQ"><a href="#2-安装RabbitMQ" class="headerlink" title="2.安装RabbitMQ"></a>2.安装<span style="color: #333333; font-family: 'Microsoft YaHei'; line-height: 24px;">RabbitMQ</span></h2><p>下载运行<a href="https://pan.baidu.com/s/1cqpG0u" target="_blank" rel="noopener">rabbitmq-server-3.6.5</a> ，需要其他版本或者32位系统的，可以去<a href="http://www.rabbitmq.com/download.html" target="_blank" rel="noopener">官网</a>下载。</p>
+<p>依旧可以不改变默认进行安装。</p>
+<p>需要注意：默认安装的RabbitMQ 监听端口是5672</p>
+<h2 id="3-配置"><a href="#3-配置" class="headerlink" title="3.配置"></a>3.配置</h2><h3 id="激活-RabbitMQ’s-Management-Plugin"><a href="#激活-RabbitMQ’s-Management-Plugin" class="headerlink" title="激活 RabbitMQ’s Management Plugin"></a>激活 RabbitMQ’s Management Plugin</h3><p>使用RabbitMQ 管理插件，可以更好的可视化方式查看Rabbit MQ 服务器实例的状态。</p>
+<p>打开命令窗口：</p>
+<p>输入命令：</p>
+<div class="cnblogs_code">
+
+<pre><span style="color: #800000;">"</span><span style="color: #800000;">C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin\rabbitmq-plugins.bat</span><span style="color: #800000;">"</span> enable rabbitmq_management</pre>
+
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924000520059-1488931520.png" alt=""></p>
+<p>这样，就安装好插件了，是不是能使用了呢？别急，需要重启服务才行，使用命令：</p>
+<div class="cnblogs_code">
+
+<pre>net stop RabbitMQ && net start RabbitMQ</pre>
+
+</div>
+
+<p>这时候的，也许会出现这种结果：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001111465-1934628397.png" alt=""></p>
+<p>“发生错误：发生系统错误 <span lang="EN-US">5。<span lang="EN-US">  拒绝访问。”</span></span></p>
+<p>这是什么鬼？查了下，原来，5代表的是：不是系统管理员权限。</p>
+<p>问题解决方案：使用管理员打开<span lang="EN-US">cmd再执行此命令：</span></p>
+<p><span lang="EN-US"><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001344449-518927811.png" alt=""></span></p>
+<p>这样就结束了吗？当然没有。</p>
+<h3 id="创建用户，密码，绑定角色"><a href="#创建用户，密码，绑定角色" class="headerlink" title="创建用户，密码，绑定角色"></a>创建用户，密码，绑定角色</h3><p>使用<span lang="EN-US">rabbitmqctl控制台命令（位于<span lang="EN-US">C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin&gt;）来创建用户，密码，绑定权限等。</span></span></p>
+<p>注意：安装路径不同的请看仔细啊。</p>
+<p>rabbitmq的用户管理包括增加用户，删除用户，查看用户列表，修改用户密码。</p>
+<p>查看已有用户及用户的角色：</p>
+<div class="cnblogs_code">
+
+<pre>rabbitmqctl.bat list_users</pre>
+
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001810231-489339837.png" alt=""></p>
+<p>新增一个用户：</p>
+<div class="cnblogs_code">
+
+<pre>rabbitmqctl.bat add_user username password</pre>
+
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924002317996-1750317042.png" alt=""></p>
+<p>此时来看下我们当前用户哈：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924002417481-667312419.png" alt=""></p>
+<p>eric 后面没有“[administrator]”</p>
+<p>这个administrator是干嘛用的呢？这就涉及到用户角色问题了：</p>
+<p>按照我个人理解，rabbitmq用户角色可分为五类：超级管理员, 监控者, 策略制定者, 普通管理者以及其他。</p>
+<p>(1) 超级管理员(administrator)</p>
+<p>可登陆管理控制台(启用management plugin的情况下)，可查看所有的信息，并且可以对用户，策略(policy)进行操作。</p>
+<p>(2) 监控者(monitoring)</p>
+<p>可登陆管理控制台(启用management plugin的情况下)，同时可以查看rabbitmq节点的相关信息(进程数，内存使用情况，磁盘使用情况等) </p>
+<p>(3) 策略制定者(policymaker)</p>
+<p>可登陆管理控制台(启用management plugin的情况下), 同时可以对policy进行管理。</p>
+<p>(4) 普通管理者(management)</p>
+<p>仅可登陆管理控制台(启用management plugin的情况下)，无法看到节点信息，也无法对策略进行管理。</p>
+<p>(5) 其他的</p>
+<p>无法登陆管理控制台，通常就是普通的生产者和消费者。</p>
+<p>好啦，我们也给 eric 变成 “超级管理员” 角色：</p>
+<div class="cnblogs_code">
+
+<pre>rabbitmqctl.bat set_user_tags username administrator</pre>
+
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003014246-2015422375.png" alt=""></p>
+<p>再看下结果哈：</p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003047621-1862534375.png" alt=""></p>
+<p>当然，除了上面的administrator 还有 monitoring、policymaker、management、自定义名称 ，对应上面介绍到的不同的角色。</p>
+<p>像我们人一样，我们角色除了是公司的员工，还是父母的孩子、子女的爸妈等，用户也可以同时具有多个角色,设置方式:</p>
+<div class="cnblogs_code">
+
+<pre>rabbitmqctl.bat  set_user_tags  username tag1 tag2 ...</pre>
+
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924005224668-1215172795.png" alt=""></p>
+<p>恩，现在总觉得guest 这个不安全（它的默认密码是guest）,想更改密码，好办：</p>
+<div class="cnblogs_code">
+
+<pre>rabbitmqctl change_password userName newPassword</pre>
+
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003352168-1350202979.png" alt=""></p>
+<p>有的人也许会说，我就是看guest不爽，老子新增了administrator用户了，就是想干掉它，可以：</p>
+<div class="cnblogs_code">
+
+<pre>rabbitmqctl.bat delete_user username</pre>
+
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924003722731-332310837.png" alt=""></p>
+<p> 这时，可能有人就要问了：命令框是只有一个用户了，你怎么操作啊？怎么查看执行情况啊/</p>
+<p> 当然有路子啦：</p>
+<p>使用浏览器打开<a href="http://localhost:15672/" target="_blank" rel="noopener"> http://localhost:15672</a><a href="http://localhost:15672%C2%A0/"> </a>访问Rabbit Mq的管理控制台，使用刚才创建的账号登陆系统：</p>
+<p> <img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924004023387-110874920.png" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924004035121-53385779.png" alt=""></p>
+<p>其实，除了可查看所有的信息 ，上面的命令 增删改查、权限设置，都可以在这个页面完成，还可以依据业务需求设置策略(policy)，具体的就不在这里啰嗦了，大家可以看看网上的帖子。</p>
+<h3 id="权限设置"><a href="#权限设置" class="headerlink" title="权限设置"></a><span style="font-size: 14px; line-height: 1.5;">权限设置</span></h3><p><span style="font-size: 14px; line-height: 1.5;">用户有了角色，那也需要权限设置啊，别急，慢慢来：</span></p>
+<p>按照官方文档，用户权限指的是用户对exchange，queue的操作权限，包括配置权限，读写权限。</p>
+<p>我们配置权限会影响到exchange、queue的声明和删除。</p>
+<p>读写权限影响到从queue里取消息、向exchange发送消息以及queue和exchange的绑定(binding)操作。</p>
+<p>例如： 将queue绑定到某exchange上，需要具有queue的可写权限，以及exchange的可读权限；向exchange发送消息需要具有exchange的可写权限；从queue里取数据需要具有queue的可读权限</p>
+<p>权限相关命令为：</p>
+<p>(1) 设置用户权限</p>
+<p>rabbitmqctl  set_permissions  -p  VHostPath  User  ConfP  WriteP  ReadP</p>
+<p>(2) 查看(指定hostpath)所有用户的权限信息</p>
+<p>rabbitmqctl  list_permissions  [-p  VHostPath]</p>
+<p>(3) 查看指定用户的权限信息</p>
+<p>rabbitmqctl  list_user_permissions  User</p>
+<p>(4)  清除用户的权限信息</p>
+<p>rabbitmqctl  clear_permissions  [-p VHostPath]  User</p>
+<p>现在环境搭好了，用户、角色、权限全部设置好，开始进行code（原理整理，及编码 待续）</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>安装参考 <a href="http://www.rabbitmq.com/install-windows-manual.html" target="_blank" rel="noopener">http://www.rabbitmq.com/install-windows-manual.html</a></p>
+<p>权限内容参考 <a href="http://www.rabbitmq.com/man/rabbitmqctl.1.man.html" target="_blank" rel="noopener">http://www.rabbitmq.com/man/rabbitmqctl.1.man.html</a></p>
+<p>权限命令摘自 <a href="https://my.oschina.net/hncscwc/blog/262246" target="_blank" rel="noopener">https://my.oschina.net/hncscwc/blog/262246</a></p>
+</div><div class="post-copyright"><blockquote><p>原文作者: yapengWen</p><p>原文链接: <a href="http://yoursite.com/2017/12/20/java/rabbitmaq/windows下安装rabbitmq及操作常用命令/">http://yoursite.com/2017/12/20/java/rabbitmaq/windows下安装rabbitmq及操作常用命令/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/MQ/">MQ</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2018/10/17/java/Druid/druid_%E8%A7%A3%E5%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E7%A0%81/" class="pre">配置Druid解密数据库密码</a><a href="/2017/12/15/java/rabbitmaq/%E5%85%B3%E4%BA%8Erabbitmq%E4%BB%A5%E5%8F%8Arabbitmq%E5%92%8Cspring%E7%9A%84%E6%95%B4%E5%90%88/" class="next">关于RabbitMQ以及RabbitMQ和Spring的整合</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装Erlang"><span class="toc-text">1.安装Erlang </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装RabbitMQ"><span class="toc-text">2.安装RabbitMQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-配置"><span class="toc-text">3.配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#激活-RabbitMQ’s-Management-Plugin"><span class="toc-text">激活 RabbitMQ’s Management Plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建用户，密码，绑定角色"><span class="toc-text">创建用户，密码，绑定角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限设置"><span class="toc-text">权限设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考："><span class="toc-text">参考：</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/java/socket/Mina%E6%8A%A5%E6%96%87%E9%80%9A%E4%BF%A1%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/">Mina报文通信简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/31/java/eclipse/eclipse%E4%B8%AD%E6%B3%A8%E9%87%8A%E6%A8%A1%E6%9D%BF%E4%BD%BF%E7%94%A8/">eclipse中注释模板使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/17/java/Druid/druid_%E8%A7%A3%E5%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E7%A0%81/">配置Druid解密数据库密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/20/java/rabbitmaq/windows%E4%B8%8B%E5%AE%89%E8%A3%85rabbitmq%E5%8F%8A%E6%93%8D%E4%BD%9C%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">windows下安装rabbitMQ及操作常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/15/java/rabbitmaq/%E5%85%B3%E4%BA%8Erabbitmq%E4%BB%A5%E5%8F%8Arabbitmq%E5%92%8Cspring%E7%9A%84%E6%95%B4%E5%90%88/">关于RabbitMQ以及RabbitMQ和Spring的整合</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/15/java/rabbitmaq/spring%E6%95%B4%E5%90%88rocketmq/">Spring整合RocketMQ</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/java/JVM/jprofiler_remote_linux/">jprofiler_监控远程linux服务器的JVM进程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/java/%E5%8A%A0%E8%A7%A3%E5%AF%86/aes-rsa%E5%8A%A0%E5%AF%86%E6%9C%BA%E5%88%B6/">AES-RSA加密机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/java/%E5%8A%A0%E8%A7%A3%E5%AF%86/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/">对称加密与非对称加密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/java/%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">基本设计模式</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%81%E7%A8%8B%E5%9B%BE/">流程图</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/Anaconda/" style="font-size: 15px;">Anaconda</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Atom/" style="font-size: 15px;">Atom</a> <a href="/tags/arithmetic/" style="font-size: 15px;">arithmetic</a> <a href="/tags/uml/" style="font-size: 15px;">uml</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/JVM/" style="font-size: 15px;">JVM</a> <a href="/tags/DRUID/" style="font-size: 15px;">DRUID</a> <a href="/tags/UUID/" style="font-size: 15px;">UUID</a> <a href="/tags/eclipse/" style="font-size: 15px;">eclipse</a> <a href="/tags/jetty/" style="font-size: 15px;">jetty</a> <a href="/tags/MQ/" style="font-size: 15px;">MQ</a> <a href="/tags/mina/" style="font-size: 15px;">mina</a> <a href="/tags/spring/" style="font-size: 15px;">spring</a> <a href="/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/" style="font-size: 15px;">加解密</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">7</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">yapengWen.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.5"></script><div id="fullscreen-img" class="hide"><span class="close"></span></div><script type="text/javascript" src="/js/imgview.js?v=2.0.5" async></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.5" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
